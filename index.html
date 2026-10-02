@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hay un castillo en el fondo</title>
+ 
+  
+  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="centro">
+    
+    <header class="header">
+      <div class="mensajeCastillo">
+        
+        <span>Hay un Castillo en el fondo </span>
+      </div>
+      <h1 class="contador">Contador de Personas</h1>
+      <div id="contTotal" class="numeroContador">0</div>
+    </header>
+
+   
+
+    
+    <section class="recuadroGeneros">
+      
+      <article class="cajaContador">
+        <div>
+         
+          <span>Hombres</span>
+        </div>
+        
+        <div id="contHom" class="numCont">0</div>
+
+        <div class="boton">
+          <button 
+            type="button" 
+            class="botonAc botonMin" 
+            id="botonHomMin"
+            disabled
+          >
+            
+            <span>-1</span>
+          </button>
+          <button 
+            type="button" 
+            class="botonAc botonMas" 
+            id="botonHomPlus" 
+           
+          >
+            
+            <span>+1</span>
+          </button>
+        </div>
+      </article>
+
+      
+      <article class="cajaContador">
+        <div>
+          
+          <span>Mujeres</span>
+        </div>
+        
+        <div id="contMuj" class="numCont">0</div>
+
+        <div class="boton">
+          <button 
+            type="button" 
+            class="botonAc botonMin" 
+            id="botonMujMin"
+            disabled
+          >
+            
+            <span>-1</span>
+          </button>
+          <button 
+            type="button" 
+            class="botonAc botonMas" 
+            id="botonMujPlus"
+          >
+            
+            <span>+1</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    
+    <footer class="piePag">
+      <div class="info">
+        <span>
+          <span id="porcentajeHom">0%</span> Hombres
+        </span>
+        <span>
+          <span id="porcentajeMuj">0%</span> Mujeres
+        </span>
+      </div>
+
+      <button type="button" class="reseteo" id="reseteo">
+        
+        <span>Reiniciar</span>
+      </button>
+    </footer>
+  </main>
+
+ 
+    <script src="script.js"></script>
+</body>
+</html>

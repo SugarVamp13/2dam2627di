@@ -1,0 +1,190 @@
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #231215;
+  background: url("CastilloDracula.jpg") center/cover fixed no-repeat;
+}
+
+.centro {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.mensajeCastillo {
+  display: inline-block;
+  margin-bottom: .75rem;
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  background: #fbf2f4;
+  border: 1px solid #800020;
+  color:  #5c0017;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.contador {
+  color: #5c0017;
+  font-size: 1.85rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin-top: .25rem;
+  color: red;
+  font-size: .95rem;
+}
+
+
+.numeroContador {
+  margin: .5rem 0;
+  color: red;
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.total-label {
+  color: red;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.recuadroGeneros {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.cajaContador {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  background: white;
+  border: 1.5px solid #800020;
+  border-radius: 16px;
+}
+
+
+
+.numCont {
+  color: #231215;
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.boton {
+  width: 100%;
+  display: flex;
+  gap: .75rem;
+}
+
+.botonAc {
+  flex: 1;
+  height: 48px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.botonMin {
+  background: #fbf2f4;
+  border: 1px solid #800020;
+  color:  #5c0017;
+}
+
+.botonMin:hover:not(:disabled) {
+  background: #f5cfd7;
+}
+
+.botonMin:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.botonMas {
+  background:  #5c0017;
+  color: white;
+}
+
+.botonMas:hover {
+  background: #5c0017;
+}
+
+.piePag {
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #800020;
+}
+
+.info {
+  display: flex;
+  gap: 1rem;
+  color: yellow;
+  font-size: .85rem;
+}
+
+
+
+
+
+
+.reseteo {
+  padding: .5rem 1rem;
+  border: 1px solid #800020;
+  border-radius: 10px;
+  background: #fbf2f4;
+  color: red;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+.pulAnim {
+  animation: pop .2s ease;
+}
+
+@keyframes pop {
+  50% { transform: scale(1.1); }
+}
+
+@media (max-width: 540px) {
+  .counters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .total-display {
+    font-size: 3.5rem;
+  }
+}
