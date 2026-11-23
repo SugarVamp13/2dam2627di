@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitácora de Desarrollo — Guía Turística de Griñón</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-page: #f5ede0;
+      --bg-paper: #fcf7ee;
+      --bg-elevated: #efe3cf;
+      --bg-prompt: #f4e3d7;
+      --bg-code: #e8dcc8;
+      --text-main: #291d14;
+      --text-muted: #5e4836;
+      --accent-primary: #7c2d12;
+      --accent-secondary: #8a5a14;
+      --border-rustic: #b89b72;
+      --border-subtle: #d6c3a5;
+      --shadow-paper: 0 10px 28px rgba(41, 29, 20, 0.12);
+    }
+
+    html.dark {
+      --bg-page: #16120e;
+      --bg-paper: #201a15;
+      --bg-elevated: #2b231c;
+      --bg-prompt: #341d15;
+      --bg-code: #17130f;
+      --text-main: #f2e6d5;
+      --text-muted: #c5b299;
+      --accent-primary: #d96b43;
+      --accent-secondary: #e0ac4b;
+      --border-rustic: #6b5338;
+      --border-subtle: #423426;
+      --shadow-paper: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.65;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(138, 90, 20, 0.06), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(124, 45, 18, 0.06), transparent 45%);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Barra superior rústica */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: color-mix(in srgb, var(--bg-paper) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-rustic);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-family: "Cinzel", Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-rustic);
+      background-color: var(--bg-elevated);
+      color: var(--text-main);
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent-primary);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* Portada */
+    .portada {
+      background-color: var(--bg-paper);
+      border: 2px solid var(--border-rustic);
+      outline: 4px double var(--border-subtle);
+      outline-offset: -9px;
+      border-radius: 6px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-paper);
+      margin-bottom: 2rem;
+    }
+
+    .portada-kicker {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .portada h1 {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      line-height: 1.15;
+      margin: 0 0 1rem;
+      color: var(--accent-primary);
+      letter-spacing: 0.04em;
+    }
+
+    .portada-sub {
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.15rem;
+    }
+
+    .portada-foto {
+      max-width: 420px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-rustic);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .tools-box {
+      display: inline-block;
+      text-align: left;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-rustic);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tools-box h2 {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tools-box p {
+      margin: 0;
+    }
+
+    /* Índice con href */
+    .indice-box {
+      background-color: var(--bg-paper);
+      border: 1.5px solid var(--border-rustic);
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-paper);
+      margin-bottom: 2.5rem;
+    }
+
+    .indice-box h2 {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 1.35rem;
+      margin: 0 0 1rem;
+      color: var(--accent-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    .indice-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.6rem 1.25rem;
+    }
+
+    .indice-list a {
+      display: block;
+      padding: 0.45rem 0.7rem;
+      border-radius: 4px;
+      color: var(--text-main);
+      text-decoration: none;
+      border-left: 3px solid var(--accent-secondary);
+      background-color: var(--bg-elevated);
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .indice-list a:hover {
+      background-color: var(--bg-prompt);
+      color: var(--accent-primary);
+      transform: translateX(3px);
+    }
+
+    /* Secciones de pasos / crónica */
+    .step-section {
+      background-color: var(--bg-paper);
+      border: 1.5px solid var(--border-rustic);
+      border-radius: 6px;
+      padding: 2rem;
+      box-shadow: var(--shadow-paper);
+      margin-bottom: 2.25rem;
+      scroll-margin-top: 4.5rem;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1.5px solid var(--border-subtle);
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .step-title {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 1.45rem;
+      margin: 0;
+      color: var(--accent-primary);
+    }
+
+    .step-tag {
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-rustic);
+      color: var(--accent-secondary);
+      font-weight: 700;
+    }
+
+    /* Comentario diferenciado del Prompt */
+    .comentario-nota {
+      background-color: var(--bg-elevated);
+      border-left: 4px solid var(--accent-secondary);
+      padding: 0.9rem 1.2rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+      color: var(--text-main);
+    }
+
+    .comentario-label {
+      display: block;
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Bloque de Prompt bien definido y diferenciado */
+    .prompt-card {
+      background-color: var(--bg-prompt);
+      border: 1.5px solid var(--accent-primary);
+      border-radius: 6px;
+      padding: 1.1rem 1.35rem;
+      margin: 1.25rem 0;
+      position: relative;
+    }
+
+    .prompt-badge {
+      display: inline-block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background-color: var(--accent-primary);
+      color: #fff8f0;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    .prompt-text {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* Capturas de pantalla */
+    .captures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .capture-frame {
+      margin: 0;
+      background-color: var(--bg-code);
+      border: 1.5px solid var(--border-rustic);
+      border-radius: 6px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .capture-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .capture-frame figcaption {
+      margin-top: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .back-top {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-primary);
+      text-decoration: none;
+    }
+
+    .back-top:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .portada {
+        padding: 2rem 1.25rem;
+      }
+      .step-section {
+        padding: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#portada">Crónica de Griñón · Bitácora</a>
+      <button id="theme-toggle-btn" class="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar entre modo claro y modo oscuro">
+        <span id="theme-icon">🌙</span>
+        <span id="theme-label">Modo Oscuro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- PORTADA -->
+    <section id="portada" class="portada">
+      <div class="portada-kicker">Registro del Procedimiento Web</div>
+      <h1>GUÍA TURÍSTICA GRIÑÓN</h1>
+      <p class="portada-sub">
+        Recopilación ordenada de prompts, comentarios de proceso y capturas de pantalla correspondientes a la creación y evolución de la aplicación web.
+      </p>
+
+      <img class="portada-foto" src="./Image1.png" alt="Portada — Imagen 1 del documento" />
+
+      <div class="tools-box">
+        <h2>Prompts Usados &amp; Herramientas</h2>
+        <p>Para esta práctica se han usado las IAs <strong>Gemini</strong> y <strong>Stitch AI</strong>.</p>
+      </div>
+    </section>
+
+    <!-- ÍNDICE -->
+    <nav id="indice" class="indice-box" aria-label="Índice de secciones">
+      <h2>Índice del Documento</h2>
+      <ul class="indice-list">
+        <li><a href="#portada">Portada y Herramientas</a></li>
+        <li><a href="#paso-1">1. Esqueleto inicial con Gemini</a></li>
+        <li><a href="#paso-2">2. Rediseño rústico y medieval con Stitch AI</a></li>
+        <li><a href="#paso-3">3. Conexión con DESIGN.md y modo Pergamino/Vigilia</a></li>
+        <li><a href="#paso-4">4. Buscador sustituido por Cuaderno del Caminante</a></li>
+        <li><a href="#paso-5">5. Cuaderno interactivo, Google Maps y limpieza de icono</a></li>
+        <li><a href="#paso-6">6. Etiquetas litúrgicas y diseño Responsive/Multiplataforma</a></li>
+        <li><a href="#paso-7">7. Eliminación de botón duplicado, persistencia y menú móvil</a></li>
+        <li><a href="#paso-8">8. Eliminación de «Estado del Cronista»</a></li>
+        <li><a href="#paso-9">9. Cambio de imagen en el Hero</a></li>
+        <li><a href="#prompt-final">Prompt Final (Creación de este .html)</a></li>
+      </ul>
+    </nav>
+
+    <!-- PASO 1 -->
+    <section id="paso-1" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">1. Esqueleto inicial con Gemini</h2>
+        <span class="step-tag">Etapa 01 · Gemini</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Comentario del proceso</span>
+        De primeras empezamos con Gemini, haciendo el esqueleto inicial de la web.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Quiero hacer una web de guía turística sobre el pueblo "Griñón". Ésta debe recoger sus sitios turísticos, restaurantes y lugares de interés.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image2.png" alt="Captura 2 — Respuesta inicial en Gemini" />
+          <figcaption>Image2 — Vista de la conversación y previsualización inicial en Gemini.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image3.png" alt="Captura 3 — Primera versión de la web" />
+          <figcaption>Image3 — Resultado inicial de la web sobre Griñón.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 2 -->
+    <section id="paso-2" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">2. Rediseño rústico y medieval con Stitch AI</h2>
+        <span class="step-tag">Etapa 02 · Stitch AI</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Comentario del proceso</span>
+        La web cuenta con cards que encierran información y funciones. Vamos ahora a mejorar la interfaz con Stitch AI.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Quiero que en base a este archivo web html hagas un diseño rústico y ‘medieval’ para una guía turística de un pueblo ‘antiguo’.Debe haber un toggle button de claro/oscuro“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image4.png" alt="Captura 4 — Proyecto en Stitch AI" />
+          <figcaption>Image4 — Rediseño de la interfaz y estilos en Stitch AI.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image5.png" alt="Captura 5 — Interfaz Villa de Griñón" />
+          <figcaption>Image5 — Estética medieval/rústica aplicada a la web de Griñón.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 3 -->
+    <section id="paso-3" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">3. Conexión con DESIGN.md y modo Pergamino / Vigilia</h2>
+        <span class="step-tag">Etapa 03 · Gemini</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Comentario del proceso</span>
+        Hay varias funcionalidades que no están bien implementadas. Entre ellas el modo claro y oscuro. Vamos ahora a volver con Gemini.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“He administrado el código a Stitch AI para que rediseñe la interfaz. Haz que el .html y el .md se reconozcan desde la misma carpeta estando en la misma ruta.Además, haz que el toggle button “pergamino/vigilia” funcione y cambie de modo ‘claro’ a ‘oscuro’.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image6.png" alt="Captura 6 — Integración de DESIGN.md y Modo Vigilia" />
+          <figcaption>Image6 — Respuesta de Gemini sobre ./DESIGN.md y modo oscuro.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image7.png" alt="Captura 7 — Vista en Modo Vigilia (Oscuro)" />
+          <figcaption>Image7 — Comprobación visual en modo oscuro.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 4 -->
+    <section id="paso-4" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">4. Buscador sustituido por Cuaderno del Caminante</h2>
+        <span class="step-tag">Etapa 04 · Gemini</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Comentario del proceso</span>
+        El buscador de al lado del toggle button de modo ‘claro’ y ‘oscuro’ no tiene funcionalidad ni tampoco demasiado sentido. Voy a eliminarlo y a cambiarlo por un botón que despliegue y encierre la funcionalidad de ‘Cuaderno del caminante’, donde se pueden guardar los distintos objetivos y eventos que visitar.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“La funcionalidad de ‘id="codice-search-input"’ no tiene un uso real en esta web. Elimínala y cambiala por un botón que despliege directamente el ‘Cuaderno del Caminante’ en un Pop-Up interactivo.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image8.png" alt="Captura 8 — Cambios realizados en el código" />
+          <figcaption>Image8 — Cambios en la cabecera y el modal del Cuaderno.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image9.png" alt="Captura 9 — Pop-Up del Cuaderno del Caminante" />
+          <figcaption>Image9 — Ventana emergente del Cuaderno del Caminante.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 5 -->
+    <section id="paso-5" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">5. Cuaderno interactivo, Google Maps y limpieza de icono</h2>
+        <span class="step-tag">Etapa 05 · Gemini</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Comentario del proceso</span>
+        Lo ha añadido como ‘alert’. Además, los enlaces a Google Maps funcionan, el pergamino ya no es un ‘alert’ y permite añadir paradas ‘personalizadas’.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“El cuaderno del Caminante se abre como ‘alert’, quiero quie se abra como un formulario interactivo y que no paralice la web entera cada vez que se abre.En la sección de ‘Encrucijada Milenaria’ en lugar de la imágen estática debería haber un mapa que al hacer click te lleve directamente a Google Maps con ‘Griñón’ como objetivo.Además, cada sección con ‘pin_drop’ debe ser clickable y llevar también a Google Maps con la dirección que está puesta en el texto en referencia a Griñón.Elimina el icono ‘person’ que carece de sentido.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image10.png" alt="Captura 10 — Actualización del panel y Google Maps" />
+          <figcaption>Image10 — Actualización de #cuaderno-panel y enlaces a Google Maps.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image11.png" alt="Captura 11 — Mapa Encrucijada Milenaria" />
+          <figcaption>Image11 — Mapa interactivo hacia Google Maps con Griñón.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image12.png" alt="Captura 12 — Vista abierta en Google Maps" />
+          <figcaption>Image12 — Resultado en Google Maps con Griñón como objetivo.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image13.png" alt="Captura 13 — Botones de cabecera" />
+          <figcaption>Image13 — Botones de Cuaderno y Pergamino en la cabecera.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image14.png" alt="Captura 14 — Tarjetas de mesones con pin_drop" />
+          <figcaption>Image14 — Direcciones clicables con pin_drop en las tarjetas.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image15.png" alt="Captura 15 — Panel inicial del Cuaderno" />
+          <figcaption>Image15 — Formulario flotante del Cuaderno del Caminante.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image16.png" alt="Captura 16 — Parada personalizada añadida" />
+          <figcaption>Image16 — Parada personalizada guardada en el Cuaderno.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 6 -->
+    <section id="paso-6" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">6. Etiquetas litúrgicas y diseño Responsive / Multiplataforma</h2>
+        <span class="step-tag">Etapa 06 · Gemini</span>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Elimina ‘&lt;span class="font-label-sm text-label-sm uppercase tracking-wider text-outline hidden sm:inline"&gt;Traspasar Horas Litúrgicas:&lt;/span&gt;’ y ‘&lt;span id="aside-mode-label" class="font-label-md text-label-md uppercase tracking-wider text-primary font-semibold"&gt;Cambiar a Vigilia&lt;/span&gt;’.Haz que la página sea “Responsive” y “Multiplataforma” adaptándose a distintos dispositivos y resoluciones.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image17.png" alt="Captura 17 — Cambios responsive y etiquetas" />
+          <figcaption>Image17 — Ajustes responsive y multiplataforma en el código.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image18.png" alt="Captura 18 — Vista con panel flotante" />
+          <figcaption>Image18 — Comprobación visual de la adaptación responsive.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 7 -->
+    <section id="paso-7" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">7. Eliminación de botón duplicado, persistencia y menú móvil</h2>
+        <span class="step-tag">Etapa 07 · Gemini</span>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Elimina el toggle button ‘&lt;button class="group min-h-[36px] flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-highest border border-outline-variant/70 transition-all shadow-sm cursor-pointer" id="liturgic-toggle-btn" type="button" aria-pressed="false" aria-label="Alternar entre Modo Pergamino y Modo Vigilia"&gt;              &lt;span id="aside-sun-icon" class="material-symbols-outlined text-[18px] group-hover:rotate-45 transition-transform text-secondary scale-110"&gt;wb_sunny&lt;/span&gt;              &lt;span id="aside-moon-icon" class="material-symbols-outlined text-[18px] transition-transform text-outline"&gt;bedtime&lt;/span&gt;&lt;/button&gt;’ pues ya hay otro funcional con mayor utilidad.Permite también que el ‘Cuaderno del Caminante’ guarde todo lo que haya apuntado entre sesiones, es decir, que no se reinicie cada vez que se recarga la aplicación web.Cuando la pantalla sea tan pequeña que no se pueden mostrar los href ‘Crónicas’, ‘Monumentos’...etc del header ha que aparezca un botón con un formulario/menú desplegable que muestre los href con el nombre pertinente e iconos aprovechando el diseño de la página.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image19.png" alt="Captura 19 — Persistencia y menú desplegable" />
+          <figcaption>Image19 — Persistencia entre sesiones y menú desplegable responsive.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image20.png" alt="Captura 20 — Menú Índice de la Villa en pantalla estrecha" />
+          <figcaption>Image20 — Menú desplegable con enlaces e iconos en pantalla reducida.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 8 -->
+    <section id="paso-8" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">8. Eliminación de «Estado del Cronista»</h2>
+        <span class="step-tag">Etapa 08 · Gemini</span>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Ahora elimina la sección ‘Estado del Cronista’.“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image21.png" alt="Captura 21 — Código actualizado sin Estado del Cronista" />
+          <figcaption>Image21 — Eliminación de la sección «Estado del Cronista».</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image22.png" alt="Captura 22 — Cabecera limpia en navegador" />
+          <figcaption>Image22 — Vista en navegador sin la franja «Estado del Cronista».</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PASO 9 -->
+    <section id="paso-9" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">9. Cambio de imagen en el Hero</h2>
+        <span class="step-tag">Etapa 09 · Gemini</span>
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt</span>
+        <p class="prompt-text">“Cambia la imágen ‘&lt;rect class="svg-parchment-bg" fill="url(#medievalSky)" height="430" width="540"&gt;&lt;/rect&gt;’ por ‘https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q9yc_v74lx2oqUBnfY54GU7rLBHYwZS52fF1_izy3bcJEwqaE0N9VjzMhtErdRnC8lwRcdWL73CNX2KSK2RUSpM6-GJaXlNuXeJemI-8O_OjwBop30ai6FN-L50D8YfwMMO9ew=s680-w680-h510‘“</p>
+      </div>
+
+      <div class="captures-grid">
+        <figure class="capture-frame">
+          <img src="./Image23.png" alt="Captura 23 — Sustitución de imagen en el código" />
+          <figcaption>Image23 — Sustitución de la imagen en el bloque visual.</figcaption>
+        </figure>
+        <figure class="capture-frame">
+          <img src="./Image24.png" alt="Captura 24 — Vista final de la portada de la web" />
+          <figcaption>Image24 — Resultado final con la nueva imagen en el Hero.</figcaption>
+        </figure>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+
+    <!-- PROMPT FINAL -->
+    <section id="prompt-final" class="step-section">
+      <div class="step-header">
+        <h2 class="step-title">Prompt Final (Creación de este .html)</h2>
+        <span class="step-tag">Cierre · Bitácora .html</span>
+      </div>
+
+      <div class="comentario-nota">
+        <span class="comentario-label">Nota final</span>
+        Instrucción utilizada para generar este documento HTML estructurado con portada, índice con enlaces, prompts diferenciados, capturas, estilo rústico y selector de modo claro/oscuro.
+      </div>
+
+      <div class="prompt-card">
+        <span class="prompt-badge">Prompt Final</span>
+        <p class="prompt-text">En base a este archivo que recoge todos los Prompts y capturas con el procedimiento de esta web, creame un .html que estructure todo de forma ordenada manteniendo la sección de 'portada', las capturas de pantalla y cada Prompt bien definido y diferenciado del resto de comentarios. Añade también un "Indice" con 'href' a cada sección del documento y otro 'Prompt' adicional al final del todo, el cual será este mismo Prompt para la creación del .html. Haz que tenga también un estilo 'rústico' y añade un botón de 'claro/oscuro'</p>
+      </div>
+
+      <a class="back-top" href="#indice">↑ Volver al índice</a>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = "bitacora_grinon_theme";
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById("theme-toggle-btn");
+      const themeIcon = document.getElementById("theme-icon");
+      const themeLabel = document.getElementById("theme-label");
+
+      function applyTheme(isDark) {
+        root.classList.toggle("dark", isDark);
+        if (toggleBtn) {
+          toggleBtn.setAttribute("aria-pressed", String(isDark));
+        }
+        if (themeIcon) {
+          themeIcon.textContent = isDark ? "☀️" : "🌙";
+        }
+        if (themeLabel) {
+          themeLabel.textContent = isDark ? "Modo Claro" : "Modo Oscuro";
+        }
+        try {
+          localStorage.setItem(STORAGE_KEY, isDark ? "dark" : "light");
+        } catch (e) {}
+      }
+
+      let savedDark = false;
+      try {
+        savedDark = localStorage.getItem(STORAGE_KEY) === "dark";
+      } catch (e) {}
+      applyTheme(savedDark);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function () {
+          const isCurrentlyDark = root.classList.contains("dark");
+          applyTheme(!isCurrentlyDark);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
