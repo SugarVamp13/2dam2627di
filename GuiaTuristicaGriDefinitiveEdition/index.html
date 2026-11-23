@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <meta name="color-scheme" content="light dark"/>
+  <title>Villa de Griñón — Crónicas &amp; Guía Monumental</title>
+
+  <!-- Enlace relativo al sistema de diseño en la misma carpeta -->
+  <link rel="alternate" type="text/markdown" href="./DESIGN.md" title="Sistema de Diseño Crónica y Piedra"/>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <style>
+    :root {
+      /* Tokens por defecto sincronizados con DESIGN.md (Modo Pergamino / Claro) */
+      --color-surface: #fff8f0;
+      --color-surface-dim: #e2d9c8;
+      --color-surface-bright: #fff8f0;
+      --color-surface-container-lowest: #ffffff;
+      --color-surface-container-low: #fcf3e1;
+      --color-surface-container: #f6eddb;
+      --color-surface-container-high: #f0e7d5;
+      --color-surface-container-highest: #eae2d0;
+      --color-on-surface: #1f1b10;
+      --color-on-surface-variant: #55423f;
+      --color-inverse-surface: #343024;
+      --color-inverse-on-surface: #f9f0de;
+      --color-outline: #88726e;
+      --color-outline-variant: #dbc1bb;
+      --color-surface-tint: #994533;
+      --color-primary: #5c180a;
+      --color-on-primary: #ffffff;
+      --color-primary-container: #7a2e1e;
+      --color-on-primary-container: #ff9a84;
+      --color-inverse-primary: #ffb4a4;
+      --color-secondary: #7b5800;
+      --color-on-secondary: #ffffff;
+      --color-secondary-container: #fdc34d;
+      --color-on-secondary-container: #715000;
+      --color-tertiary: #23323a;
+      --color-on-tertiary: #ffffff;
+      --color-tertiary-container: #3a4951;
+      --color-on-tertiary-container: #a7b7c1;
+      --color-error: #ba1a1a;
+      --color-on-error: #ffffff;
+      --color-error-container: #ffdad6;
+      --color-on-error-container: #93000a;
+      --color-primary-fixed: #ffdad3;
+      --color-primary-fixed-dim: #ffb4a4;
+      --color-on-primary-fixed: #3e0500;
+      --color-on-primary-fixed-variant: #7a2e1e;
+      --color-secondary-fixed: #ffdea6;
+      --color-secondary-fixed-dim: #f7bd48;
+      --color-on-secondary-fixed: #271900;
+      --color-on-secondary-fixed-variant: #5d4200;
+      --color-tertiary-fixed: #d5e5ef;
+      --color-tertiary-fixed-dim: #b9c9d3;
+      --color-on-tertiary-fixed: #0e1d25;
+      --color-on-tertiary-fixed-variant: #3a4951;
+      --color-background: #fff8f0;
+      --color-on-background: #1f1b10;
+      --color-surface-variant: #eae2d0;
+
+      /* Tipografías de DESIGN.md */
+      --font-display: "Playfair Display", serif;
+      --font-body: "Literata", serif;
+      --font-label: "EB Garamond", serif;
+
+      /* Márgenes y áreas seguras multiplataforma */
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
+
+    /* Dark Mode Semantic Shifts definidos en DESIGN.md (Modo Vigilia / Nocturno) */
+    html.dark {
+      --color-surface: #181614;
+      --color-surface-dim: #12100e;
+      --color-surface-bright: #2a2622;
+      --color-surface-container-lowest: #141210;
+      --color-surface-container-low: #1d1a17;
+      --color-surface-container: #23201d;
+      --color-surface-container-high: #2c2824;
+      --color-surface-container-highest: #36312c;
+      --color-on-surface: #f4ebd9;
+      --color-on-surface-variant: #cfc3b0;
+      --color-inverse-surface: #f4ebd9;
+      --color-inverse-on-surface: #181614;
+      --color-outline: #9c8f7d;
+      --color-outline-variant: #4a4238;
+      --color-surface-tint: #c24d33;
+      --color-primary: #c24d33;
+      --color-on-primary: #fff8f0;
+      --color-primary-container: #8f3320;
+      --color-on-primary-container: #ffdad3;
+      --color-inverse-primary: #7a2e1e;
+      --color-secondary: #d4af37;
+      --color-on-secondary: #1f1805;
+      --color-secondary-container: #4a3b10;
+      --color-on-secondary-container: #ffdea6;
+      --color-tertiary: #1f2b33;
+      --color-on-tertiary: #f4ebd9;
+      --color-tertiary-container: #2c3b45;
+      --color-on-tertiary-container: #c5d5df;
+      --color-error: #ffb4ab;
+      --color-on-error: #690005;
+      --color-error-container: #93000a;
+      --color-on-error-container: #ffdad6;
+      --color-primary-fixed: #4d190e;
+      --color-primary-fixed-dim: #ffb4a4;
+      --color-on-primary-fixed: #ffdad3;
+      --color-on-primary-fixed-variant: #ffb4a4;
+      --color-secondary-fixed: #46370b;
+      --color-secondary-fixed-dim: #d4af37;
+      --color-on-secondary-fixed: #ffdea6;
+      --color-on-secondary-fixed-variant: #f7bd48;
+      --color-tertiary-fixed: #223038;
+      --color-tertiary-fixed-dim: #b9c9d3;
+      --color-on-tertiary-fixed: #d5e5ef;
+      --color-on-tertiary-fixed-variant: #b9c9d3;
+      --color-background: #181614;
+      --color-on-background: #f4ebd9;
+      --color-surface-variant: #2c2824;
+    }
+
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+        -webkit-text-size-adjust: 100%;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        overflow-x: clip;
+        transition: background-color 0.35s ease, color 0.35s ease;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+      button, a, [role="button"] {
+        touch-action: manipulation;
+      }
+      section[id] {
+        scroll-margin-top: 6rem;
+      }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+
+    /* Adaptación de los grabados SVG en Modo Vigilia */
+    html.dark .svg-parchment-bg { fill: #23201d; }
+    html.dark .svg-map-label { fill: #f4ebd9; }
+
+    /* Escala tipográfica fluida multiplataforma */
+    .hero-title-fluid {
+      font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+      line-height: 1.12;
+    }
+    .hero-dropcap-fluid {
+      font-size: clamp(3.25rem, 6vw, 5.5rem);
+      line-height: 0.95;
+    }
+    .section-title-fluid {
+      font-size: clamp(1.5rem, 2.5vw, 2.125rem);
+      line-height: 1.2;
+    }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-container": "var(--color-secondary-container)",
+            "tertiary": "var(--color-tertiary)",
+            "on-background": "var(--color-on-background)",
+            "error": "var(--color-error)",
+            "on-error-container": "var(--color-on-error-container)",
+            "on-primary": "var(--color-on-primary)",
+            "tertiary-container": "var(--color-tertiary-container)",
+            "on-tertiary-fixed-variant": "var(--color-on-tertiary-fixed-variant)",
+            "on-error": "var(--color-on-error)",
+            "on-primary-fixed-variant": "var(--color-on-primary-fixed-variant)",
+            "on-tertiary-fixed": "var(--color-on-tertiary-fixed)",
+            "on-secondary": "var(--color-on-secondary)",
+            "on-tertiary-container": "var(--color-on-tertiary-container)",
+            "secondary": "var(--color-secondary)",
+            "primary": "var(--color-primary)",
+            "inverse-surface": "var(--color-inverse-surface)",
+            "secondary-fixed-dim": "var(--color-secondary-fixed-dim)",
+            "on-primary-container": "var(--color-on-primary-container)",
+            "primary-container": "var(--color-primary-container)",
+            "surface-container-high": "var(--color-surface-container-high)",
+            "on-surface": "var(--color-on-surface)",
+            "surface-dim": "var(--color-surface-dim)",
+            "surface-container-lowest": "var(--color-surface-container-lowest)",
+            "on-primary-fixed": "var(--color-on-primary-fixed)",
+            "on-secondary-fixed": "var(--color-on-secondary-fixed)",
+            "surface-tint": "var(--color-surface-tint)",
+            "surface-container": "var(--color-surface-container)",
+            "surface-container-low": "var(--color-surface-container-low)",
+            "primary-fixed": "var(--color-primary-fixed)",
+            "surface": "var(--color-surface)",
+            "tertiary-fixed-dim": "var(--color-tertiary-fixed-dim)",
+            "on-surface-variant": "var(--color-on-surface-variant)",
+            "secondary-fixed": "var(--color-secondary-fixed)",
+            "surface-bright": "var(--color-surface-bright)",
+            "tertiary-fixed": "var(--color-tertiary-fixed)",
+            "background": "var(--color-background)",
+            "inverse-on-surface": "var(--color-inverse-on-surface)",
+            "error-container": "var(--color-error-container)",
+            "primary-fixed-dim": "var(--color-primary-fixed-dim)",
+            "surface-variant": "var(--color-surface-variant)",
+            "surface-container-highest": "var(--color-surface-container-highest)",
+            "on-secondary-fixed-variant": "var(--color-on-secondary-fixed-variant)",
+            "inverse-primary": "var(--color-inverse-primary)",
+            "outline-variant": "var(--color-outline-variant)",
+            "on-secondary-container": "var(--color-on-secondary-container)",
+            "outline": "var(--color-outline)",
+            "on-tertiary": "var(--color-on-tertiary)"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-xl": "2.5rem",
+            "margin-desktop": "3.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "2rem",
+            "space-lg": "1.5rem",
+            "margin-tablet": "2rem",
+            "gutter": "1.25rem",
+            "margin": "1rem"
+          },
+          fontFamily: {
+            "headline-lg-mobile": ["var(--font-display)"],
+            "body-sm": ["var(--font-body)"],
+            "display-mobile": ["var(--font-display)"],
+            "body-md": ["var(--font-body)"],
+            "headline-lg": ["var(--font-display)"],
+            "body-lg": ["var(--font-body)"],
+            "label-lg": ["var(--font-label)"],
+            "headline-sm": ["var(--font-display)"],
+            "label-md": ["var(--font-label)"],
+            "headline-md": ["var(--font-display)"],
+            "label-sm": ["var(--font-label)"],
+            "display": ["var(--font-display)"]
+          },
+          fontSize: {
+            "headline-lg-mobile": ["26px", { lineHeight: "32px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body-sm": ["14px", { lineHeight: "20px", letterSpacing: "0.015em", fontWeight: "400" }],
+            "display-mobile": ["34px", { lineHeight: "40px", letterSpacing: "0em", fontWeight: "700" }],
+            "body-md": ["16px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "label-lg": ["15px", { lineHeight: "20px", letterSpacing: "0.08em", fontWeight: "600" }],
+            "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.06em", fontWeight: "600" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "500" }],
+            "display": ["48px", { lineHeight: "56px", letterSpacing: "-0.01em", fontWeight: "700" }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Carga temprana del estado Oscuro/Claro para evitar parpadeo -->
+  <script>
+    if (localStorage.getItem('grinon_theme_mode') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed transition-colors duration-300">
+  <header style="padding-top: var(--safe-top);" class="fixed top-0 inset-x-0 z-40 bg-surface/92 backdrop-blur-md shadow-[0_1px_8px_rgba(58,38,20,0.08)] dark:shadow-[0_1px_12px_rgba(0,0,0,0.5)] border-b border-outline-variant/40 transition-colors duration-300">
+    <div class="max-w-[1600px] mx-auto min-h-20 py-2 px-4 sm:px-margin-tablet xl:px-margin-desktop flex items-center justify-between gap-2 sm:gap-4 relative">
+      <a href="#hero-seccion" class="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0 group">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary-container flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] shrink-0">
+          <span class="material-symbols-outlined text-secondary-fixed text-[22px] sm:text-[26px]">fort</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="font-headline-sm text-base sm:text-headline-sm text-primary tracking-wide leading-none truncate group-hover:text-secondary transition-colors">Villa de Griñón</span>
+          <span class="font-label-sm text-[10px] sm:text-label-sm text-secondary uppercase tracking-widest mt-1 truncate">Crónicas &amp; Guía Monumental</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-1 xl:gap-2 flex-wrap justify-center" data-active-classes="bg-surface-container-high text-primary font-bold rounded-lg">
+        <a class="px-2.5 xl:px-3 py-2 font-label-md xl:font-label-lg text-label-md xl:text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#hero-seccion">Crónicas</a>
+        <a class="px-2.5 xl:px-3 py-2 font-label-md xl:font-label-lg text-label-md xl:text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#monumentos-seccion">Monumentos</a>
+        <a class="px-2.5 xl:px-3 py-2 font-label-md xl:font-label-lg text-label-md xl:text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#mesones-seccion">Mesones</a>
+        <a class="px-2.5 xl:px-3 py-2 font-label-md xl:font-label-lg text-label-md xl:text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#rutas-seccion">Rutas</a>
+        <a class="px-2.5 xl:px-3 py-2 font-label-md xl:font-label-lg text-label-md xl:text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap" href="#cuaderno-seccion">Itinerario</a>
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Botón de menú desplegable cuando la pantalla es estrecha (< lg) -->
+        <button id="mobile-nav-toggle-btn" onclick="toggleMobileNavMenu()" type="button" aria-expanded="false" aria-controls="mobile-nav-dropdown" aria-label="Abrir menú de navegación de la Villa" class="lg:hidden min-h-[40px] px-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/60 text-primary flex items-center gap-1.5 shadow-sm transition-all cursor-pointer">
+          <span id="mobile-nav-icon" class="material-symbols-outlined text-[20px] text-secondary">menu</span>
+          <span class="hidden xs:inline font-label-sm text-label-sm uppercase tracking-wider font-semibold">Secciones</span>
+        </button>
+
+        <!-- Botón que abre el formulario flotante no bloqueante del Cuaderno del Caminante -->
+        <button id="open-cuaderno-panel-btn" onclick="toggleCuadernoPanel()" class="min-h-[40px] px-2.5 sm:px-3.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow transition-all cursor-pointer" title="Abrir formulario del Cuaderno del Caminante" type="button">
+          <span class="material-symbols-outlined text-secondary-fixed text-[19px]">menu_book</span>
+          <span class="hidden sm:inline font-label-md text-label-md uppercase tracking-wider font-semibold">Cuaderno</span>
+          <span id="header-cuaderno-badge" class="min-w-[20px] h-5 px-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Botón de cabecera vinculado a toggleLiturgicMode() -->
+        <button id="header-liturgic-btn" class="min-h-[40px] px-2.5 sm:px-3 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/60 flex items-center gap-1.5 sm:gap-2 text-on-surface transition-all cursor-pointer" title="Alternar Modo Pergamino (Claro) / Modo Vigilia (Oscuro)" type="button" aria-pressed="false">
+          <span id="header-sun-icon" class="material-symbols-outlined text-secondary text-[19px] sm:text-[20px] transition-transform">wb_sunny</span>
+          <span id="header-mode-label" class="hidden 2xl:inline font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Pergamino</span>
+          <span id="header-moon-icon" class="material-symbols-outlined text-outline text-[18px] transition-transform">bedtime</span>
+        </button>
+      </div>
+
+      <!-- Menú desplegable de navegación en pantallas pequeñas -->
+      <div id="mobile-nav-dropdown" class="lg:hidden hidden absolute top-full inset-x-4 sm:inset-x-margin-tablet mt-2 rounded-2xl bg-surface-container-lowest border border-outline-variant/70 shadow-2xl overflow-hidden z-50">
+        <div class="px-4 py-2.5 bg-surface-container-high border-b border-outline-variant/40 flex items-center justify-between">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-primary">explore</span>
+            <span>Índice de la Villa</span>
+          </span>
+          <button type="button" onclick="closeMobileNavMenu()" class="p-1 rounded text-on-surface-variant hover:text-primary cursor-pointer" aria-label="Cerrar menú">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+        <div class="p-2.5 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+          <a href="#hero-seccion" onclick="closeMobileNavMenu()" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+            <span class="w-8 h-8 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">auto_stories</span>
+            </span>
+            <span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Crónicas</span>
+          </a>
+          <a href="#monumentos-seccion" onclick="closeMobileNavMenu()" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+            <span class="w-8 h-8 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">account_balance</span>
+            </span>
+            <span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Monumentos</span>
+          </a>
+          <a href="#mesones-seccion" onclick="closeMobileNavMenu()" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+            <span class="w-8 h-8 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">restaurant</span>
+            </span>
+            <span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Mesones</span>
+          </a>
+          <a href="#rutas-seccion" onclick="closeMobileNavMenu()" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+            <span class="w-8 h-8 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">map</span>
+            </span>
+            <span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Rutas</span>
+          </a>
+          <a href="#cuaderno-seccion" onclick="closeMobileNavMenu()" class="sm:col-span-2 flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+            <span class="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">edit_note</span>
+            </span>
+            <span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Itinerario</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: calc(5rem + var(--safe-top));" class="w-full bg-surface min-h-[calc(100vh-20rem)] transition-colors duration-300">
+    <div class="flex flex-col w-full relative">
+      <!-- Toast Notificador Medieval (Pergamino & Lacre) -->
+      <div style="bottom: calc(1.25rem + var(--safe-bottom)); right: calc(1rem + var(--safe-right)); left: calc(1rem + var(--safe-left));" class="fixed z-[60] sm:left-auto sm:max-w-md transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none" id="relic-toast">
+        <div class="bg-primary text-on-primary px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl shadow-xl flex items-center gap-3 sm:space-x-3.5 border border-secondary/40">
+          <div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 shadow-inner">
+            <span class="material-symbols-outlined text-[18px]">history_edu</span>
+          </div>
+          <div class="min-w-0">
+            <p class="font-headline-sm text-base sm:text-headline-sm leading-tight text-secondary-fixed truncate" id="relic-toast-title">Códice Notificado</p>
+            <p class="font-body-sm text-xs sm:text-body-sm text-on-primary/90 line-clamp-2" id="relic-toast-message">Hito añadido con éxito al Cuaderno de la Villa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO MEDIEVAL & HERÁLDICA -->
+      <section id="hero-seccion" class="relative w-full py-10 sm:py-16 lg:py-24 px-4 sm:px-margin-tablet xl:px-margin-desktop overflow-hidden bg-gradient-to-b from-surface-container-high/60 via-surface to-surface">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="absolute -right-24 -top-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-secondary-fixed/20 blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-20 bottom-0 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-gutter-desktop items-center relative z-10">
+            <!-- Manuscrito Editorial Izquierdo -->
+            <div class="lg:col-span-7 flex flex-col items-start min-w-0">
+              <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-surface-container text-secondary text-[11px] sm:text-label-md font-label-md uppercase tracking-wider sm:tracking-widest mb-5 sm:mb-6 shadow-sm border border-outline-variant/50 max-w-full">
+                <span class="material-symbols-outlined text-[16px] text-primary shrink-0">shield</span>
+                <span class="truncate">Comarca Histórica de La Sagra • Anales del Sur</span>
+              </div>
+
+              <h1 class="font-display hero-title-fluid text-primary font-bold tracking-tight mb-5 sm:mb-6">
+                <span class="font-display hero-dropcap-fluid text-secondary float-left mr-2.5 sm:mr-3.5 -mt-1">D</span>escubre la Noble Villa de Griñón: Fervor Mudéjar y Banquete Castellano
+              </h1>
+
+              <p class="font-body-lg text-base sm:text-body-lg text-on-surface-variant leading-relaxed mb-7 sm:mb-8 max-w-2xl italic">
+                Un feudo de sosegada piedra y aromas a leña de encina a XXV leguas de la Villa y Corte. Recorre sus arcadas centenarias, el obrador de clausura de las Madres Clarisas fundado en 1523 y repósate en las aguas termales milenarias.
+              </p>
+
+              <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
+                <a class="min-h-[46px] px-6 sm:px-7 py-3.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md sm:font-label-lg text-label-md sm:text-label-lg uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5" href="#monumentos-seccion">
+                  <span class="material-symbols-outlined text-[20px] text-secondary-fixed">castle</span>
+                  <span>Peregrinar los Monumentos</span>
+                </a>
+                <button onclick="openCuadernoPanel()" type="button" class="min-h-[46px] px-5 sm:px-6 py-3.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-primary border border-outline-variant/60 font-label-md sm:font-label-lg text-label-md sm:text-label-lg uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[20px] text-secondary">menu_book</span>
+                  <span>Abrir Cuaderno del Caminante</span>
+                </button>
+              </div>
+
+              <div class="grid grid-cols-1 xs:grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-xl pt-4 bg-surface-container-low/80 p-4 sm:p-5 rounded-xl shadow-inner border border-outline-variant/40">
+                <div class="flex flex-col">
+                  <span class="font-headline-md sm:font-headline-lg text-xl sm:text-headline-lg text-primary leading-tight">XXVII km</span>
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mt-0.5">Al Sur de la Corte</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-headline-md sm:font-headline-lg text-xl sm:text-headline-lg text-secondary leading-tight">S. XVI</span>
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mt-0.5">Patrimonio Mudéjar</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-headline-md sm:font-headline-lg text-xl sm:text-headline-lg text-on-surface leading-tight">450+ Años</span>
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mt-0.5">Clausura y Yemas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ilustración Manuscrita & Retablo Gráfico del Casco Histórico -->
+            <div class="lg:col-span-5 relative min-w-0">
+              <div class="bg-surface-container-lowest p-4 sm:p-6 rounded-2xl shadow-xl border border-outline-variant/50 flex flex-col relative overflow-hidden group">
+                <div class="absolute top-6 right-6 z-20 flex items-center justify-center">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg ring-4 ring-secondary-fixed/50">
+                    <span class="material-symbols-outlined text-[20px] sm:text-[24px]">verified</span>
+                  </div>
+                </div>
+
+                <div class="w-full bg-surface-container rounded-xl overflow-hidden relative shadow-inner">
+                  <img alt="Vista monumental de la Villa de Griñón" loading="eager" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500 select-none" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q9yc_v74lx2oqUBnfY54GU7rLBHYwZS52fF1_izy3bcJEwqaE0N9VjzMhtErdRnC8lwRcdWL73CNX2KSK2RUSpM6-GJaXlNuXeJemI-8O_OjwBop30ai6FN-L50D8YfwMMO9ew=s680-w680-h510"/>
+                </div>
+
+                <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-2 pt-3 bg-surface-container-low px-3 sm:px-4 py-3 rounded-lg border border-outline-variant/40">
+                  <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <span class="material-symbols-outlined text-primary text-[22px] sm:text-[24px] shrink-0">church</span>
+                    <div class="min-w-0">
+                      <p class="font-headline-sm text-base sm:text-headline-sm text-primary leading-tight truncate">Códice Visual de Griñón</p>
+                      <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant italic truncate">La Asunción y Clausura de las Clarisas</p>
+                    </div>
+                  </div>
+                  <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-fixed font-bold bg-secondary-fixed px-2.5 py-1 rounded shrink-0">Sello Feudal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DE MONUMENTOS Y RETABLOS SAGRADOS -->
+      <section class="w-full py-12 sm:py-16 px-4 sm:px-margin-tablet xl:px-margin-desktop bg-surface-container-lowest border-y border-outline-variant/30" id="monumentos-seccion">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 pb-4 sm:pb-6">
+            <div class="max-w-3xl">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-symbols-outlined text-secondary text-[20px]">account_balance</span>
+                <span class="font-label-md text-label-md uppercase tracking-widest text-secondary font-bold">Fervor y Piedra Esculpida</span>
+              </div>
+              <h2 class="font-display section-title-fluid text-primary font-semibold tracking-tight">Monumentos Sagrados de la Villa</h2>
+              <p class="font-body-md text-sm sm:text-body-md text-on-surface-variant mt-2 italic">
+                Testimonios de cantería y devoción desde el año del Señor 1523. Haz clic sobre cada emblema para revelar cronicones y horarios de torno.
+              </p>
+            </div>
+            <div class="self-start md:self-auto text-on-surface-variant font-label-md text-label-md uppercase tracking-wider bg-surface-container px-4 py-2 rounded-lg shadow-sm border border-outline-variant/50">
+              Archivos Parroquiales · Griñón
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 xl:gap-gutter-desktop">
+            <!-- 1. Iglesia de Ntra. Sra. de la Asunción -->
+            <article class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-full h-44 rounded-xl bg-surface-container-high overflow-hidden relative mb-5 shadow-inner">
+                  <img alt="Iglesia de Nuestra Señora de la Asunción en Griñón" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuos5Qq7g3qco7WAVW7uOYUbhZAy1NBmWKiot3fMbKacaxkeFHNdxP1BuJXrCTDDmtSjnZeQvS1j5lcg15VCf-MsVZGCTXW--ABMzjsjXdAnyJwaxSxMX-_-fpFT1eCS-EO4_hQlysHv4ELtdA1FO0FLM5nlI2iIsp2wBsu7dih2XeiiONQRTf7sTzwJkJMFu9VNWcIpqHrvOBry1sjgkzuXcBkm4YxZhIMKjjOR0"/>
+                  <div class="absolute top-3 left-3 bg-primary/95 text-on-primary font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 rounded shadow-sm">
+                    S. XVI Mudéjar
+                  </div>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary leading-tight mb-2 group-hover:text-secondary transition-colors">
+                  Iglesia de Nuestra Señora de la Asunción
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Torre mudéjar de ladrillo toledano, retablo mayor barroco dorado al fuego y artesonado renacentista de lacería mudéjar.
+                </p>
+                <div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-2 rounded-lg font-body-sm text-body-sm mb-4">
+                  <span class="material-symbols-outlined text-[18px] text-secondary shrink-0">schedule</span>
+                  <span>Mañanas 10:00-13:00 / Vigilias 18:30</span>
+                </div>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-outline-variant/30">
+                <button class="min-h-[36px] font-label-md text-label-md uppercase tracking-wider text-primary hover:text-secondary font-bold transition-colors cursor-pointer" onclick="openRelicModal('pat-iglesia')" type="button">
+                  Ver Crónica →
+                </button>
+                <button class="min-h-[36px] px-3.5 py-1.5 rounded bg-primary-container text-on-primary hover:bg-primary font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('pat-iglesia', 'Iglesia de la Asunción', 'Monumento Sagrado', 'Plaza Mayor, Griñón')" type="button">
+                  + Cuaderno
+                </button>
+              </div>
+            </article>
+
+            <!-- 2. Convento de la Encarnación -->
+            <article class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-full h-44 rounded-xl bg-surface-container-high overflow-hidden relative mb-5 shadow-inner">
+                  <img alt="Convento de la Encarnación en Griñón" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8wfuNZoJSV25Ot6l0itkQDpQxiaZtv6MNaThed2U3rCIIZ9qgUoWzBEL6YEnVqd4mTHnZ5937qp4R-tvSZo-7MqXLLdsla40sEvtFaCqgFeN-4S3zOHWvF_J_IAIe8QlKQLybwQqxkssvvC30lwzFKpBHU6w4zifiRBU68DQ9-kNLOoPDwjbdBygV83dukusr0zYhr4XwkwwPj7qO_tnG2SUdLsc_Teb-drLiVw"/>
+                  <div class="absolute top-3 left-3 bg-secondary text-on-secondary font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 rounded shadow-sm font-bold">
+                    Fundado 1523
+                  </div>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary leading-tight mb-2 group-hover:text-secondary transition-colors">
+                  Convento de la Encarnación
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Erigido por Don Rodrigo de Vivar. Paz monástica inalterada y célebre torno de repostería con pastas de almendra y yemas.
+                </p>
+                <div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-2 rounded-lg font-body-sm text-body-sm mb-4">
+                  <span class="material-symbols-outlined text-[18px] text-secondary shrink-0">door_sliding</span>
+                  <span>Torno: 10:00-13:30 / 16:30-18:30</span>
+                </div>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-outline-variant/30">
+                <button class="min-h-[36px] font-label-md text-label-md uppercase tracking-wider text-primary hover:text-secondary font-bold transition-colors cursor-pointer" onclick="openRelicModal('pat-convento')" type="button">
+                  Ver Crónica →
+                </button>
+                <button class="min-h-[36px] px-3.5 py-1.5 rounded bg-primary-container text-on-primary hover:bg-primary font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('pat-convento', 'Convento de Madres Clarisas', 'Monasterio &amp; Torno', 'Calle de la Fuente, Griñón')" type="button">
+                  + Cuaderno
+                </button>
+              </div>
+            </article>
+
+            <!-- 3. Plaza Mayor y Soportales -->
+            <article class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-full h-44 rounded-xl bg-surface-container-high overflow-hidden relative mb-5 shadow-inner">
+                  <img alt="Plaza Mayor de Griñón" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXAdcwXfcpnqK-aNKKbuoqeFgrNAiRIXVhxZMUqyqxdGLic6zsm1fKA9yrqfQ8je2BmmX9xIJ5Lfzf3lHYMWjehKqXuFmScMSb_i35TIz7EP7PGwP8IbKVwsRDI5jY91CNhSrvidqqTS2bFuF-BX62O09Wc66tbH3c_pWWktsQVlOU3fug_kmOwy0Hrem9IDq-AA0JPnV4VO7sSOUT8dYbmfhAQzuAlKa2X3T-PB8"/>
+                  <div class="absolute top-3 left-3 bg-tertiary text-on-tertiary font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 rounded shadow-sm">
+                    Concejo Histórico
+                  </div>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary leading-tight mb-2 group-hover:text-secondary transition-colors">
+                  Plaza Mayor y Soportales
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Antiguo enclave de la alhóndiga del trigo, mercados francos y pregones reales bajo robustas arcadas de granito y alerce.
+                </p>
+                <div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-2 rounded-lg font-body-sm text-body-sm mb-4">
+                  <span class="material-symbols-outlined text-[18px] text-secondary shrink-0">public</span>
+                  <span>Espacio de Libre Paso (24h)</span>
+                </div>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-outline-variant/30">
+                <button class="min-h-[36px] font-label-md text-label-md uppercase tracking-wider text-primary hover:text-secondary font-bold transition-colors cursor-pointer" onclick="openRelicModal('pat-plaza')" type="button">
+                  Ver Crónica →
+                </button>
+                <button class="min-h-[36px] px-3.5 py-1.5 rounded bg-primary-container text-on-primary hover:bg-primary font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('pat-plaza', 'Plaza Mayor y Soportales', 'Ágora del Feudo', 'Plaza Mayor de los Fueros, Griñón')" type="button">
+                  + Cuaderno
+                </button>
+              </div>
+            </article>
+
+            <!-- 4. Ermita de la Soledad -->
+            <article class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between group">
+              <div>
+                <div class="w-full h-44 rounded-xl bg-surface-container-high overflow-hidden relative mb-5 shadow-inner">
+                  <img alt="Ermita de Nuestra Señora de la Soledad en Griñón" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDehK1oOhRwsq1bi83_o5vq1mu4m8zDqPrK7YxkFlHMsAnyz9Ay8YAHvNZsHiT1Srk2ZbdwYdGHPkjdbVQzLMOanWj2kCrAe0xKKhqjhDA1MNltNMiquNzsYAlLDF0P7ZaB6Ipo_9LLDsyZ7DGeQCzfBrfGZo3gbg-Fpa0qElrJue4U4OxylHBexT-fGzm1OsZr7RtI09y1zmFQuDNMhcxK3RG_tlvS2wMyuGhixNo"/>
+                  <div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-widest px-3 py-1 rounded shadow-sm font-bold">
+                    Leyenda de 1585
+                  </div>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary leading-tight mb-2 group-hover:text-secondary transition-colors">
+                  Ermita de la Soledad &amp; Cruz
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Templo devocional en el antiguo camino de carretas, vinculado al milagro del Cristo Aparecido que congrega romeros.
+                </p>
+                <div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-2 rounded-lg font-body-sm text-body-sm mb-4">
+                  <span class="material-symbols-outlined text-[18px] text-secondary shrink-0">explore</span>
+                  <span>Camino Real de la Sagra</span>
+                </div>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-outline-variant/30">
+                <button class="min-h-[36px] font-label-md text-label-md uppercase tracking-wider text-primary hover:text-secondary font-bold transition-colors cursor-pointer" onclick="openRelicModal('pat-ermita')" type="button">
+                  Ver Crónica →
+                </button>
+                <button class="min-h-[36px] px-3.5 py-1.5 rounded bg-primary-container text-on-primary hover:bg-primary font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('pat-ermita', 'Ermita de la Soledad &amp; Cruz', 'Hito Devocional', 'Camino del Cristo, Griñón')" type="button">
+                  + Cuaderno
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESONES, ASADORES Y BANQUETES DEL FEUDO -->
+      <section id="mesones-seccion" class="w-full py-12 sm:py-16 px-4 sm:px-margin-tablet xl:px-margin-desktop bg-surface-container-high/40">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="max-w-3xl mb-6 sm:mb-8">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">restaurant</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-secondary font-bold">Viandas de Encina &amp; Tinaja</span>
+            </div>
+            <h2 class="font-display section-title-fluid text-primary font-semibold tracking-tight">Tabernas, Mesones &amp; Dulces de Clausura</h2>
+            <p class="font-body-md text-sm sm:text-body-md text-on-surface-variant mt-2 italic">
+              Cazuelas de barro burbujeantes, cordero lechal churro dorado al roble y el sigilo dulce de las monjas franciscanas.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mb-8 sm:mb-10" id="tavern-filters">
+            <button class="tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-primary text-on-primary shadow-sm transition-all cursor-pointer" data-tavern="todos" type="button">
+              Todos los Yantares
+            </button>
+            <button class="tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-primary border border-outline-variant/50 shadow-sm transition-all cursor-pointer" data-tavern="asador" type="button">
+              Hornos de Leña &amp; Asadores
+            </button>
+            <button class="tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-primary border border-outline-variant/50 shadow-sm transition-all cursor-pointer" data-tavern="taberna" type="button">
+              Tabernas &amp; Bodegas
+            </button>
+            <button class="tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-primary border border-outline-variant/50 shadow-sm transition-all cursor-pointer" data-tavern="clausura" type="button">
+              Obradores de Clausura
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6 xl:gap-gutter-desktop" id="tavern-cards-grid">
+            <!-- Mesón El Horno -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="asador">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">
+                    Horno de Leña de Encina
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-primary font-bold">Venerable</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Asador Mesón El Horno de Griñón</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Cuartos de lechal asados lentamente en cazuela de barro, morcilla artesana, torrezno suflado crujiente y ensaladas de la fértil huerta griñonense.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">wine_bar</span> Vinos Tintos de Madrid &amp; Rioja Antigua</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Calle+Mayor+del+Feudo%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Calle Mayor del Feudo, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Calle Mayor del Feudo • Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-horno', 'Mesón El Horno de Griñón', 'Asador Castellano', 'Calle Mayor del Feudo, Griñón')" type="button">
+                + Guardar Mesón en el Cuaderno
+              </button>
+            </article>
+
+            <!-- La Posada de La Sagra -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="asador">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-primary-fixed text-on-primary-fixed-variant font-bold">
+                    Cuchara &amp; Carbón
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-primary font-bold">Tradición</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Restaurante La Posada de La Sagra</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Guisos madrileños de puchero hondo, judiones de la comarca con oreja y chorizo, y carnes rojas a la brasa con guarnición de patata al caldero.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">soup_kitchen</span> Pucheros de Cuchara Tradicional</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Real+de+Humanes%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Avenida Real de Humanes, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Entorno Avenida Real de Humanes, Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-posada', 'Posada de La Sagra', 'Guisos &amp; Brasas', 'Avda. Real de Humanes, Griñón')" type="button">
+                + Guardar Mesón en el Cuaderno
+              </button>
+            </article>
+
+            <!-- Taberna de los Soportales -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="taberna">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed-dim text-on-secondary-fixed font-bold">
+                    Tapas &amp; Alborozo
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-secondary font-bold">Popular</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Taberna Los Soportales de la Plaza</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Picoteo informal bajo los soportales: torrecillas de panceta ibérica, patatas bravas según la receta secreta de tabernero y cañas frías de espuela.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">sports_bar</span> Vermú de Grifo &amp; Cerveza de Abadía</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Plaza+Mayor+de+los+Fueros%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Plaza Mayor de los Fueros, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Plaza Mayor de los Fueros, Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-soportales', 'Taberna Los Soportales', 'Tapeo &amp; Terraza', 'Plaza Mayor de los Fueros, Griñón')" type="button">
+                + Guardar Mesón en el Cuaderno
+              </button>
+            </article>
+
+            <!-- Cervecería El Rincón Mudéjar -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="taberna">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-bold">
+                    Bodeguilla
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-secondary font-bold">Selecto</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Cervecería &amp; Bodega El Rincón Mudéjar</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Tostas sobre hogaza de tahona con quesos curados de oveja castellana, cecina de vaca vieja ahumada y croquetas melosas de boletus del bosque.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">lunch_dining</span> Tostas de Pan Rústico al Carbón</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Calle+del+Campanario%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Calle del Campanario, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Calle del Campanario, Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-rincon', 'El Rincón Mudéjar', 'Vinos &amp; Tostas', 'Calle del Campanario, Griñón')" type="button">
+                + Guardar Mesón en el Cuaderno
+              </button>
+            </article>
+
+            <!-- Obrador de las Madres Clarisas -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="clausura">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">
+                    Torno Conventual
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-secondary font-bold">Bendito</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Obrador de las Monjas Clarisas</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Siglos de receta secreta orante: pastas de almendra marcona, yemas doradas, rosquillas de anís de la abuela y mantecados finos al estilo imperial.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">bakery_dining</span> Venta tradicional por el Torno de madera</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Convento+de+la+Encarnaci%C3%B3n%2C+Calle+de+la+Fuente%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Convento de la Encarnación, Calle de la Fuente, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Convento de la Encarnación, Calle de la Fuente, Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-clarisas', 'Dulces Conventuales Clarisas', 'Obrador Sagrado', 'Convento de la Encarnación, Griñón')" type="button">
+                + Guardar Dulces en el Cuaderno
+              </button>
+            </article>
+
+            <!-- Tahona del Sur -->
+            <article class="tavern-card bg-surface rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-xl border border-outline-variant/50 transition-all flex flex-col justify-between" data-cat="clausura">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-surface-container-highest text-on-surface font-bold">
+                    Harinas de la Sagra
+                  </span>
+                  <span class="font-headline-sm text-base sm:text-headline-sm text-primary font-bold">Artesano</span>
+                </div>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-2">Tahona y Pastelería Real del Sur</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                  Churros crujientes con chocolate espeso de puchero, tartas de requesón campesino y panes de hogaza amasados a mano con masa madre añeja.
+                </p>
+                <div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low p-3.5 rounded-lg mb-4">
+                  <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary shrink-0">coffee</span> Desayunos de Caminante &amp; Meriendas</p>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Calle+Real%2C+Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-primary hover:text-secondary underline decoration-dotted underline-offset-4 transition-colors" title="Ver en Google Maps: Calle Real, Griñón">
+                    <span class="material-symbols-outlined text-[16px] text-secondary shrink-0">pin_drop</span>
+                    <span>Calle Real, Griñón</span>
+                  </a>
+                </div>
+              </div>
+              <button class="min-h-[42px] w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" onclick="addFeudItem('gas-tahona', 'Tahona y Pastelería Real', 'Desayunos &amp; Panes', 'Calle Real, Griñón')" type="button">
+                + Guardar Mesón en el Cuaderno
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TERMAS, CAÑADAS & JÚBILO POPULAR -->
+      <section class="w-full py-12 sm:py-16 px-4 sm:px-margin-tablet xl:px-margin-desktop bg-tertiary text-on-tertiary relative overflow-hidden">
+        <div class="max-w-[1600px] mx-auto relative z-10">
+          <div class="absolute -left-20 top-1/2 w-72 h-72 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+          <div class="absolute right-0 bottom-0 w-80 h-80 rounded-full bg-primary/25 blur-3xl pointer-events-none"></div>
+
+          <div class="max-w-3xl mb-8 sm:mb-12">
+            <div class="flex items-center gap-2 mb-2 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined text-[20px]">spa</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest font-bold">Aguas Sanadoras &amp; Caminos Francos</span>
+            </div>
+            <h2 class="font-display section-title-fluid text-on-tertiary font-semibold tracking-tight">Las Grandes Termas &amp; Bosques del Feudo</h2>
+            <p class="font-body-md text-sm sm:text-body-md text-on-tertiary-container mt-2 italic">
+              El deleite del descanso romano complementado con el sosiego del encinar de La Sagra y la algarabía de las pólvoras patronales.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 xl:gap-gutter-desktop">
+            <div class="bg-tertiary-container/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xl border border-white/10">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center mb-5 shadow-inner">
+                  <span class="material-symbols-outlined text-[26px]">hot_tub</span>
+                </div>
+                <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed/20 text-secondary-fixed-dim font-bold inline-block mb-3">
+                  Termalismo Clásico
+                </span>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-on-tertiary mb-3">Las Grandes Termas de Griñón</h3>
+                <p class="font-body-sm text-body-sm text-on-tertiary-container leading-relaxed mb-6">
+                  El mayor circuito hidrotermal del sur de Madrid, heredero del concepto de termas romanas: piscinas de flotación, saunas finlandesas, manantiales calientes y baños turcos reconfortantes.
+                </p>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-white/10">
+                <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">Cura de Aguas</span>
+                <button class="min-h-[38px] px-4 py-2 rounded bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-md cursor-pointer font-bold" onclick="addFeudItem('ocio-termas', 'Grandes Termas de Griñón', 'Balneario &amp; Spa Clásico', 'Griñón, Madrid')" type="button">
+                  + Al Cuaderno
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-tertiary-container/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xl border border-white/10">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center mb-5 shadow-inner">
+                  <span class="material-symbols-outlined text-[26px]">forest</span>
+                </div>
+                <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed/20 text-secondary-fixed-dim font-bold inline-block mb-3">
+                  Cañadas &amp; Encinas
+                </span>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-on-tertiary mb-3">Dehesa Boyal &amp; Caminos Reales</h3>
+                <p class="font-body-sm text-body-sm text-on-tertiary-container leading-relaxed mb-6">
+                  Arboledas autóctonas protegidas con senderos pedestres y ciclistas que enlazan con Cubas y Serranillos. Ideal para caminatas silenciosas bajo el cielo infinito castellano.
+                </p>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-white/10">
+                <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">Paso Libre</span>
+                <button class="min-h-[38px] px-4 py-2 rounded bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-md cursor-pointer font-bold" onclick="addFeudItem('ocio-dehesa', 'Dehesa Boyal y Caminos Rurales', 'Espacio Natural &amp; Senderismo', 'Dehesa Boyal, Griñón')" type="button">
+                  + Al Cuaderno
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-tertiary-container/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xl border border-white/10 md:col-span-2 lg:col-span-1">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center mb-5 shadow-inner">
+                  <span class="material-symbols-outlined text-[26px]">celebration</span>
+                </div>
+                <span class="font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded bg-secondary-fixed/20 text-secondary-fixed-dim font-bold inline-block mb-3">
+                  Júbilo &amp; Pólvora
+                </span>
+                <h3 class="font-headline-md text-lg sm:text-headline-md text-on-tertiary mb-3">Fiestas del Santísimo Cristo Aparecido</h3>
+                <p class="font-body-sm text-body-sm text-on-tertiary-container leading-relaxed mb-6">
+                  Solemnidades mayores en junio y verbenas de la Asunción en agosto: danzas procesionales, torneos populares, mercadillo de oficios y castillos de fuegos en la plaza principal.
+                </p>
+              </div>
+              <div class="pt-4 flex items-center justify-between gap-2 border-t border-white/10">
+                <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">Junio &amp; Agosto</span>
+                <button class="min-h-[38px] px-4 py-2 rounded bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-md cursor-pointer font-bold" onclick="addFeudItem('ocio-fiestas', 'Fiestas del Santo Cristo y Mercadillo', 'Tradición Popular', 'Plaza Mayor, Griñón')" type="button">
+                  + Al Cuaderno
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANIFICADOR INTERACTIVO: CUADERNO DEL CAMINANTE -->
+      <section class="w-full py-12 sm:py-16 px-4 sm:px-margin-tablet xl:px-margin-desktop bg-surface" id="cuaderno-seccion">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="max-w-3xl mb-8 sm:mb-10">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">edit_note</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-secondary font-bold">Memoria de Viaje</span>
+            </div>
+            <h2 class="font-display section-title-fluid text-primary font-semibold tracking-tight">Cuaderno del Caminante • Mi Itinerario</h2>
+            <p class="font-body-md text-sm sm:text-body-md text-on-surface-variant mt-2 italic">
+              Anota tus paradas entre conventos, hornos de asado y termas, o aplica el itinerario solemne recomendado por los cronistas de la Villa.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-gutter-desktop items-start">
+            <div class="lg:col-span-7 bg-surface-container-low rounded-2xl p-5 sm:p-8 shadow-md border border-outline-variant/50 min-w-0">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-outline-variant/40">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0">
+                    <span class="material-symbols-outlined text-[20px]">book</span>
+                  </div>
+                  <div>
+                    <h3 class="font-headline-sm text-base sm:text-headline-sm text-primary">Pliegos Anotados</h3>
+                    <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant italic" id="cuaderno-counter-text">0 paradas anotadas</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button class="min-h-[38px] px-3.5 py-2 rounded bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary font-label-sm text-label-sm uppercase tracking-wider transition-all shadow-sm cursor-pointer font-bold" onclick="cargarJornadaIdeal()" type="button">
+                    Cargar Jornada Ideal
+                  </button>
+                  <button class="min-h-[38px] px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant border border-outline-variant/50 font-label-sm text-label-sm uppercase tracking-wider transition-all cursor-pointer" onclick="limpiarCuaderno()" type="button">
+                    Limpiar Pliegos
+                  </button>
+                </div>
+              </div>
+
+              <!-- Formulario rápido para añadir parada personalizada en la sección -->
+              <form onsubmit="handleAddCustomStop(event, 'section')" class="mt-5 p-3.5 sm:p-4 rounded-xl bg-surface border border-outline-variant/40 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <input id="sec-stop-title" type="text" required placeholder="Nueva parada (ej. Fuente Vieja)" class="min-h-[40px] px-3 py-2 rounded-lg bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+                <input id="sec-stop-cat" type="text" placeholder="Tipo (ej. Paseo, Mesón)" class="min-h-[40px] px-3 py-2 rounded-lg bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+                <div class="flex gap-2">
+                  <input id="sec-stop-loc" type="text" placeholder="Dirección en Griñón" class="min-h-[40px] w-full px-3 py-2 rounded-lg bg-surface-container-low border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+                  <button type="submit" class="min-h-[40px] px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider font-bold shrink-0 cursor-pointer">
+                    Añadir
+                  </button>
+                </div>
+              </form>
+
+              <div class="py-6 space-y-3 min-h-[200px]" id="cuaderno-lista"></div>
+
+              <div class="hidden pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-outline-variant/40" id="cuaderno-footer">
+                <span class="font-body-sm text-body-sm text-on-surface-variant italic">Puedes copiar este itinerario para tus heraldos y compañeros de senda.</span>
+                <button class="min-h-[40px] px-4 py-2.5 rounded bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer shrink-0" onclick="copiarResumenRuta()" type="button">
+                  <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                  <span>Copiar Registro</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 bg-surface-container rounded-2xl p-5 sm:p-8 shadow-md border border-outline-variant/50 min-w-0">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary-fixed font-bold bg-primary-fixed px-3 py-1 rounded inline-block mb-4">
+                Lauda de los Cronistas
+              </span>
+              <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mb-4 leading-tight">Itinerario Imperial de 1 Jornada</h3>
+
+              <div class="space-y-6 relative pl-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-secondary/40">
+                <div class="relative">
+                  <span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">I</span>
+                  <h4 class="font-headline-sm text-base sm:text-headline-sm text-primary">Alborear &amp; Clausura (10:00 h)</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                    Encuentro en la <strong>Plaza Mayor</strong>, contemplación del retablo mayor de la <strong>Iglesia de la Asunción</strong> y compra de yemas por el torno en el <strong>Convento de Clarisas</strong>.
+                  </p>
+                </div>
+
+                <div class="relative">
+                  <span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center font-bold">II</span>
+                  <h4 class="font-headline-sm text-base sm:text-headline-sm text-secondary">Banquete al Horno de Encina (14:00 h)</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                    Descanso gastronómico en el <strong>Mesón El Horno</strong>: lechal dorado al fuego con morcilla y vino de tinaja de La Sagra.
+                  </p>
+                </div>
+
+                <div class="relative">
+                  <span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-tertiary text-on-tertiary font-label-sm text-label-sm flex items-center justify-center font-bold">III</span>
+                  <h4 class="font-headline-sm text-base sm:text-headline-sm text-primary">Vigilia &amp; Aguas Termales (17:30 h)</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                    Paseo sereno por la <strong>Dehesa Boyal</strong> y reposo en el circuito de aguas curativas en las <strong>Termas de Griñón</strong> antes de regresar a la Corte.
+                  </p>
+                </div>
+              </div>
+
+              <button class="mt-8 min-h-[44px] w-full py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md uppercase tracking-wider transition-all shadow-md cursor-pointer" onclick="cargarJornadaIdeal()" type="button">
+                Anotar Este Itinerario en Mi Cuaderno
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUÍA DE POSTAS, CAMINOS REALES & CARTOGRAFÍA -->
+      <section id="rutas-seccion" class="w-full py-12 sm:py-16 px-4 sm:px-margin-tablet xl:px-margin-desktop bg-surface-container-high/60 border-t border-outline-variant/40">
+        <div class="max-w-[1600px] mx-auto">
+          <div class="max-w-2xl mb-8 sm:mb-12">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">explore</span>
+              <span class="font-label-md text-label-md uppercase tracking-widest text-secondary font-bold">Postas &amp; Veredas del Reino</span>
+            </div>
+            <h2 class="font-display section-title-fluid text-primary font-semibold tracking-tight">Cartografía Antigua &amp; Caminos de Acceso</h2>
+            <p class="font-body-md text-sm sm:text-body-md text-on-surface-variant mt-2 italic">
+              A tan sólo XXV minutos de las puertas de Madrid por la Autovía imperial de Toledo.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 xl:gap-gutter-desktop mb-8 sm:mb-12">
+            <div class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md border border-outline-variant/50">
+              <div class="w-10 h-10 rounded-lg bg-primary-container text-secondary-fixed flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[22px]">directions_car</span>
+              </div>
+              <h3 class="font-headline-sm text-base sm:text-headline-sm text-primary mb-2">Por Carroza &amp; Camino Real</h3>
+              <ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 leading-relaxed">
+                <li>• <strong>A-42 (Toledo):</strong> Salida Torrejón de la Calzada a Griñón.</li>
+                <li>• <strong>M-404:</strong> Eje directo Navalcarnero – Chinchón.</li>
+                <li>• <strong>M-405:</strong> Desde Fuenlabrada y Humanes.</li>
+              </ul>
+            </div>
+
+            <div class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md border border-outline-variant/50">
+              <div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[22px]">directions_bus</span>
+              </div>
+              <h3 class="font-headline-sm text-base sm:text-headline-sm text-primary mb-2">Diligencias &amp; Líneas</h3>
+              <ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 leading-relaxed">
+                <li>• <strong>Línea 460:</strong> Plaza Elíptica (Madrid) – Griñón – Batres.</li>
+                <li>• <strong>Línea 468:</strong> Getafe – Griñón – Ugena.</li>
+                <li>• <strong>Línea 470:</strong> Plaza Elíptica – Humanes – Serranillos.</li>
+              </ul>
+            </div>
+
+            <div class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md border border-outline-variant/50">
+              <div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[22px]">signpost</span>
+              </div>
+              <h3 class="font-headline-sm text-base sm:text-headline-sm text-primary mb-2">Límites Señoriales</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Enclavado en la comarca de La Sagra madrileña, colindante con los feudos de Cubas de la Sagra, Serranillos del Valle, Moraleja de Enmedio y Humanes de Madrid.
+              </p>
+            </div>
+
+            <div class="bg-surface rounded-2xl p-5 sm:p-6 shadow-md border border-outline-variant/50">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed-variant flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[22px]">call</span>
+              </div>
+              <h3 class="font-headline-sm text-base sm:text-headline-sm text-primary mb-2">Despacho Consistorial</h3>
+              <ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 leading-relaxed">
+                <li>• <strong>Concejo (Plaza Mayor):</strong> 91 814 00 14</li>
+                <li>• <strong>Alguaciles / Policía:</strong> 092 / 91 814 00 14</li>
+                <li>• <strong>Casa de Salud Griñón:</strong> 91 814 07 11</li>
+                <li>• <strong>Auxilio del Reino:</strong> 112</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-surface rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg border border-outline-variant/50 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
+            <div class="w-full lg:max-w-md min-w-0">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Encrucijada Milenaria</span>
+              <h3 class="font-headline-md text-lg sm:text-headline-md text-primary mt-1 mb-3">En el Corazón de La Sagra Madrileña</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">
+                Griñón ha sido desde tiempos medievales nudo de postas entre la cuenca del Guadarrama y el Tajo imperial de Toledo. Haz clic sobre el mapa para abrir Griñón en Google Maps.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-surface-container rounded font-label-sm text-label-sm text-primary border border-outline-variant/40">Códice Postal: 28971</span>
+                <span class="px-3 py-1 bg-surface-container rounded font-label-sm text-label-sm text-primary border border-outline-variant/40">Altitud: 672 varas</span>
+                <span class="px-3 py-1 bg-surface-container rounded font-label-sm text-label-sm text-primary border border-outline-variant/40">Gente: Griñonenses</span>
+              </div>
+            </div>
+
+            <!-- Mapa interactivo clicable hacia Google Maps con Griñón como objetivo -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Gri%C3%B1%C3%B3n%2C+Madrid" target="_blank" rel="noopener noreferrer" title="Abrir Griñón en Google Maps" class="w-full lg:w-3/5 bg-surface-container-low hover:bg-surface-container rounded-xl p-3.5 sm:p-5 shadow-inner border border-outline-variant/40 hover:border-secondary transition-all group block relative overflow-hidden">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1">
+                <span class="inline-flex items-center gap-1.5 font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">map</span>
+                  <span>Objetivo: Griñón (Madrid)</span>
+                </span>
+                <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary group-hover:translate-x-0.5 transition-transform font-semibold">
+                  <span>Abrir en Google Maps</span>
+                  <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                </span>
+              </div>
+
+              <svg class="w-full h-auto select-none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+                <rect class="svg-parchment-bg" fill="#F8F2E6" height="200" rx="8" width="500"></rect>
+                <line stroke="#7A2E1E" stroke-linecap="round" stroke-width="4" x1="40" x2="460" y1="100" y2="100"></line>
+                <line stroke="#FDC34D" stroke-dasharray="8 6" stroke-width="1.5" x1="40" x2="460" y1="100" y2="100"></line>
+                <line stroke="#23323A" stroke-linecap="round" stroke-width="4" x1="250" x2="250" y1="30" y2="170"></line>
+                <line stroke="#F8F2E6" stroke-dasharray="6 6" stroke-width="1.5" x1="250" x2="250" y1="30" y2="170"></line>
+
+                <circle cx="70" cy="100" fill="#5C180A" r="9"></circle>
+                <circle cx="70" cy="100" fill="#F8F2E6" r="4"></circle>
+                <text class="svg-map-label" fill="#5C180A" font-family="Playfair Display" font-size="12" font-weight="600" text-anchor="middle" x="70" y="130">Navalcarnero</text>
+                <text fill="#B8860B" font-family="EB Garamond" font-size="11" font-weight="bold" text-anchor="middle" x="70" y="80">M-404</text>
+
+                <circle cx="430" cy="100" fill="#5C180A" r="9"></circle>
+                <circle cx="430" cy="100" fill="#F8F2E6" r="4"></circle>
+                <text class="svg-map-label" fill="#5C180A" font-family="Playfair Display" font-size="12" font-weight="600" text-anchor="middle" x="430" y="130">A-42 / Torrejón</text>
+                <text fill="#B8860B" font-family="EB Garamond" font-size="11" font-weight="bold" text-anchor="middle" x="430" y="80">M-404</text>
+
+                <circle cx="250" cy="35" fill="#23323A" r="9"></circle>
+                <circle cx="250" cy="35" fill="#F8F2E6" r="4"></circle>
+                <text class="svg-map-label" fill="#23323A" font-family="Playfair Display" font-size="12" font-weight="600" text-anchor="start" x="325" y="40">Madrid / M-405</text>
+
+                <circle cx="250" cy="165" fill="#23323A" r="9"></circle>
+                <circle cx="250" cy="165" fill="#F8F2E6" r="4"></circle>
+                <text class="svg-map-label" fill="#23323A" font-family="Playfair Display" font-size="12" font-weight="600" text-anchor="start" x="325" y="170">Toledo / Serranillos</text>
+
+                <circle cx="250" cy="100" fill="#5C180A" r="24" stroke="#B8860B" stroke-width="2"></circle>
+                <circle cx="250" cy="100" fill="#FDC34D" r="16"></circle>
+                <circle cx="250" cy="100" fill="#5C180A" r="6"></circle>
+                <rect fill="#23323A" height="24" rx="4" width="108" x="196" y="56"></rect>
+                <text fill="#FFFFFF" font-family="Playfair Display" font-size="11" font-weight="bold" text-anchor="middle" x="250" y="72">VILLA DE GRIÑÓN</text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL DE CRÓNICAS HISTÓRICAS Y PRIVILEGIOS -->
+      <div class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-300" id="relic-modal">
+        <div class="bg-surface rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-outline-variant flex flex-col max-h-[88dvh]">
+          <div class="px-4 sm:px-6 py-3.5 sm:py-4 bg-primary text-on-primary flex items-center justify-between shadow-md shrink-0">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="material-symbols-outlined text-secondary-fixed text-[22px] sm:text-[24px] shrink-0">history_edu</span>
+              <span class="font-headline-sm text-base sm:text-headline-sm text-secondary-fixed truncate">Códice Notarial de Griñón</span>
+            </div>
+            <button class="w-9 h-9 rounded-full bg-primary-container hover:bg-primary text-on-primary flex items-center justify-center transition-colors cursor-pointer shrink-0" onclick="closeRelicModal()" type="button" aria-label="Cerrar crónica">
+              <span class="material-symbols-outlined text-[18px]">close</span>
+            </button>
+          </div>
+
+          <div class="p-4 sm:p-8 overflow-y-auto space-y-4">
+            <div>
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-fixed font-bold bg-secondary-fixed px-3 py-1 rounded inline-block mb-2" id="modal-relic-tag">Patrimonio del Feudo</span>
+              <h3 class="font-headline-lg text-xl sm:text-headline-lg text-primary" id="modal-relic-title">Título del Monumento</h3>
+            </div>
+            <p class="font-body-md text-sm sm:text-body-md text-on-surface leading-relaxed italic" id="modal-relic-text">
+              Crónica descriptiva detallada con citas históricas del concejo.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-surface-container p-4 rounded-xl shadow-inner border border-outline-variant/40">
+              <div>
+                <p class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Horas de Culto o Torno</p>
+                <p class="font-body-sm text-body-sm text-on-surface font-semibold mt-0.5" id="modal-relic-hours">Consultar alborear</p>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Emplazamiento</p>
+                <p class="font-body-sm text-body-sm text-on-surface font-semibold mt-0.5" id="modal-relic-loc">Casco Histórico</p>
+              </div>
+            </div>
+            <div class="bg-secondary-fixed/40 p-4 rounded-xl border border-secondary/30">
+              <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold flex items-center gap-1.5 mb-1">
+                <span class="material-symbols-outlined text-[18px]">lightbulb</span> Consejo del Cronista Mayor
+              </p>
+              <p class="font-body-sm text-body-sm text-on-surface italic" id="modal-relic-tip">
+                Contemplar la torre con los rayos de poniente desde la arcada norte.
+              </p>
+            </div>
+          </div>
+
+          <div class="px-4 sm:px-6 py-3.5 sm:py-4 bg-surface-container-high flex flex-wrap items-center justify-between gap-2 border-t border-outline-variant/40 shrink-0">
+            <button class="min-h-[38px] px-3 sm:px-4 py-2 font-label-md text-xs sm:text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="closeRelicModal()" type="button">
+              Cerrar Pergamino
+            </button>
+            <button class="min-h-[40px] px-4 sm:px-5 py-2.5 rounded bg-primary hover:bg-primary-container text-on-primary font-label-md text-xs sm:text-label-md uppercase tracking-wider transition-all shadow-sm cursor-pointer" id="modal-add-button" type="button">
+              Añadir a mi Cuaderno
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULARIO / PANEL INTERACTIVO NO BLOQUEANTE: CUADERNO DEL CAMINANTE -->
+      <aside id="cuaderno-panel" style="bottom: calc(1rem + var(--safe-bottom)); right: calc(1rem + var(--safe-right)); left: calc(1rem + var(--safe-left));" aria-label="Formulario interactivo del Cuaderno del Caminante" class="fixed z-50 hidden sm:left-auto sm:right-6 sm:w-[440px] max-h-[82dvh] bg-surface rounded-2xl shadow-2xl border border-outline-variant flex-col overflow-hidden transition-all duration-300">
+        <!-- Cabecera del panel -->
+        <div class="px-4 sm:px-5 py-3.5 bg-primary text-on-primary flex items-center justify-between shadow-md shrink-0">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="material-symbols-outlined text-secondary-fixed text-[22px] shrink-0">menu_book</span>
+            <div class="min-w-0">
+              <h3 class="font-headline-sm text-base sm:text-headline-sm text-secondary-fixed leading-tight truncate">Cuaderno del Caminante</h3>
+              <p id="panel-cuaderno-counter-text" class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary/80">0 paradas anotadas</p>
+            </div>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-primary-container hover:bg-primary text-on-primary flex items-center justify-center transition-colors cursor-pointer shrink-0" onclick="closeCuadernoPanel()" title="Minimizar / Cerrar panel" type="button" aria-label="Cerrar panel del Cuaderno">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+
+        <!-- Formulario interactivo para añadir paradas sin paralizar la página -->
+        <form onsubmit="handleAddCustomStop(event, 'panel')" class="p-3.5 sm:p-4 bg-surface-container-low border-b border-outline-variant/40 space-y-2.5 shrink-0">
+          <p class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Añadir parada a tu ruta</p>
+          <input id="panel-stop-title" type="text" required placeholder="Lugar o parada en Griñón" class="min-h-[40px] w-full px-3 py-2 rounded-lg bg-surface border border-outline-variant/60 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+          <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-2">
+            <input id="panel-stop-cat" type="text" placeholder="Categoría (ej. Mesón)" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface border border-outline-variant/60 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+            <input id="panel-stop-loc" type="text" placeholder="Calle o zona en Griñón" class="min-h-[38px] px-3 py-1.5 rounded-lg bg-surface border border-outline-variant/60 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary"/>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+            <div class="flex items-center gap-1.5">
+              <button class="min-h-[34px] px-2.5 py-1.5 rounded bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary font-label-sm text-label-sm uppercase tracking-wider transition-all cursor-pointer font-bold" onclick="cargarJornadaIdeal()" type="button">
+                Jornada Ideal
+              </button>
+              <button class="min-h-[34px] px-2.5 py-1.5 rounded bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant/50 font-label-sm text-label-sm uppercase tracking-wider transition-all cursor-pointer" onclick="limpiarCuaderno()" type="button">
+                Limpiar
+              </button>
+            </div>
+            <button type="submit" class="min-h-[36px] px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider font-bold cursor-pointer shadow-sm">
+              + Guardar Parada
+            </button>
+          </div>
+        </form>
+
+        <!-- Lista interactiva desplazable dentro del panel -->
+        <div class="p-3.5 sm:p-4 overflow-y-auto space-y-2.5 flex-1" id="panel-cuaderno-lista"></div>
+
+        <!-- Pie del panel -->
+        <div class="px-4 py-3 bg-surface-container-high flex items-center justify-between gap-2 border-t border-outline-variant/40 shrink-0">
+          <button class="min-h-[36px] px-3 py-1.5 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="closeCuadernoPanel()" type="button">
+            Seguir navegando
+          </button>
+          <button id="panel-cuaderno-copy-btn" class="min-h-[38px] px-4 py-2 rounded bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm cursor-pointer" onclick="copiarResumenRuta()" type="button">
+            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+            <span>Copiar Ruta</span>
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer style="padding-bottom: calc(1.5rem + var(--safe-bottom));" class="w-full bg-surface-container-high pt-8 sm:pt-space-xl border-t border-outline-variant/50 transition-colors duration-300">
+    <div class="max-w-[1600px] mx-auto w-full px-4 sm:px-margin-tablet xl:px-margin-desktop flex flex-col gap-6 sm:gap-space-lg">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-space-md">
+        <div class="flex items-center gap-3 sm:gap-space-md">
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary-container flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] shrink-0">
+            <span class="material-symbols-outlined text-secondary-fixed text-[22px] sm:text-[24px]">verified</span>
+          </div>
+          <div>
+            <p class="font-headline-sm text-base sm:text-headline-sm text-primary">Sello del Concejo &amp; Cabildo de la Villa</p>
+            <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant italic">Fiel testimonio de fueros, memorias y caminos milenarios.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-space-lg">
+          <div class="text-left md:text-right">
+            <span class="block font-label-sm text-label-sm uppercase tracking-wider text-outline">Hospedería del Feudo</span>
+            <span class="font-body-md text-sm sm:text-body-md text-on-surface">Posada Real del Torreón</span>
+          </div>
+          <div class="text-left md:text-right">
+            <span class="block font-label-sm text-label-sm uppercase tracking-wider text-outline">Oficina de Caminantes</span>
+            <span class="font-body-md text-sm sm:text-body-md text-on-surface">Plaza Mayor de los Fueros, s/n</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-4 sm:pt-space-md border-t border-outline-variant/30">
+        <p class="font-label-sm text-[10px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider sm:tracking-widest">© Anno Domini MMXXVI — Crónica &amp; Guía de la Villa Histórica. Todos los fueros reservados.</p>
+        <div class="flex flex-wrap items-center gap-3 sm:gap-space-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+          <a class="hover:text-primary transition-colors py-1" href="./DESIGN.md" target="_blank">Sistema DESIGN.md</a>
+          <span class="text-outline">•</span>
+          <a class="hover:text-primary transition-colors py-1" href="#rutas-seccion">Cartografía Antigua</a>
+          <span class="text-outline">•</span>
+          <button onclick="openCuadernoPanel()" type="button" class="hover:text-primary transition-colors uppercase cursor-pointer py-1">Memorial de Pasantes</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT DE INTERACCIÓN MEDIEVAL & SINCRONIZACIÓN CON DESIGN.MD -->
+  <script>
+    // =====================================================================
+    // 0. CARGA Y PARSEO DE DESIGN.MD DESDE LA MISMA CARPETA (./DESIGN.md)
+    // =====================================================================
+    async function cargarSistemaDisenoDesdeMarkdown() {
+      try {
+        const response = await fetch('./DESIGN.md');
+        if (!response.ok) throw new Error('No se encontró DESIGN.md en la ruta relativa');
+        const markdown = await response.text();
+
+        const yamlMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+        if (yamlMatch && yamlMatch[1]) {
+          const yamlContent = yamlMatch[1];
+          const colorRegex = /^\s{2}([a-z0-9-]+):\s*['"](#[0-9a-fA-F]{3,8})['"]/gm;
+          let match;
+          const rootStyle = document.documentElement.style;
+          while ((match = colorRegex.exec(yamlContent)) !== null) {
+            rootStyle.setProperty(`--design-md-${match[1]}`, match[2]);
+          }
+        }
+      } catch (err) {}
+    }
+
+    // =====================================================================
+    // 1. ARCHIVO DE DATOS HISTÓRICOS DE GRIÑÓN
+    // =====================================================================
+    const cronicasDeGrinon = {
+      'pat-iglesia': {
+        title: 'Iglesia de Nuestra Señora de la Asunción',
+        tag: 'Siglo XVI · Mudéjar & Renacimiento',
+        desc: 'Mandada erigir sobre un antiguo templo bajomedieval, la Iglesia de Nuestra Señora de la Asunción simboliza la grandeza del mudéjar toledano en Madrid. Su torre campanario esbelta alterna verdugadas de ladrillo con mampostería tosca. En su interior reposa un impresionante retablo mayor barroco cuajado de oro y un artesonado de lazos que desafía el paso de los siglos.',
+        hours: 'Mañanas de 10:00 a 13:00 h y Vigilias a las 18:30 h',
+        loc: 'Plaza de la Iglesia, Griñón',
+        tip: 'Repara en el nido de cigüeñas que corona el chapitel mudéjar al caer la luz dorada de la tarde.'
+      },
+      'pat-convento': {
+        title: 'Convento de la Encarnación (Madres Clarisas)',
+        tag: 'Fundado en 1523 · Clausura & Repostería',
+        desc: 'Fundado en el año 1523 por mandato del noble caballero Don Rodrigo de Vivar. Este cenobio franciscano conserva una iglesia serena de nave única y artesonado mudéjar de gran pureza. El torno de clausura sigue girando como hace cuatro siglos para ofrecer a los romeros pastas de almendra, amarguillos y yemas bendecidas.',
+        hours: 'Torno conventual: 10:00-13:30 h y 16:30-18:30 h',
+        loc: 'Calle de la Fuente, Griñón',
+        tip: 'Avisa con discreción mediante la campanilla del torno para solicitar las afamadas pastas de té.'
+      },
+      'pat-plaza': {
+        title: 'Plaza Mayor y Soportales de Granito',
+        tag: 'Ágora del Feudo · Siglos XVI - XVIII',
+        desc: 'El corazón latiente de la Villa. Aquí se instalaba la alhóndiga real y el fielato donde se medía el trigo de La Sagra. Rodeada de soportales apoyados sobre basas de granito y pilares de alerce, la plaza acoge el mercado franco y las solemnes celebraciones de la villa.',
+        hours: 'Espacio público perpetuo (24 horas)',
+        loc: 'Plaza Mayor de los Fueros, Griñón',
+        tip: 'Ocupa mesa al mediodía bajo los soportales orientados al mediodía para degustar el aperitivo local.'
+      },
+      'pat-ermita': {
+        title: 'Ermita de la Soledad & Cruz del Cristo Aparecido',
+        tag: 'Milagro Devocional de 1585',
+        desc: 'Erigida en el camino de carretas que comunicaba Toledo con la Corte. Su arquitectura popular encalada y cubierta de teja curva árabe custodia una honda fe popular ligada a la aparición del Santísimo Cristo en el siglo XVI, atrayendo romerías de toda La Sagra.',
+        hours: 'Apertura en días festivos y vísperas patronales',
+        loc: 'Camino Real de la Soledad, Griñón',
+        tip: 'Detén el paso junto al crucero de piedra tallado que vigila el pórtico de entrada.'
+      }
+    };
+
+    // =====================================================================
+    // 2. CONMUTADOR DE VIGILIA (OSCURO) / MODO PERGAMINO (CLARO)
+    // =====================================================================
+    const headerToggleBtn = document.getElementById('header-liturgic-btn');
+    const headerModeLabel = document.getElementById('header-mode-label');
+
+    function updateLiturgicState() {
+      const isDark = document.documentElement.classList.contains('dark');
+      try {
+        localStorage.setItem('grinon_theme_mode', isDark ? 'dark' : 'light');
+      } catch (e) {}
+
+      if (headerModeLabel) {
+        headerModeLabel.textContent = isDark ? 'Vigilia (Oscuro)' : 'Pergamino (Claro)';
+      }
+
+      const sunIcon = document.getElementById('header-sun-icon');
+      const moonIcon = document.getElementById('header-moon-icon');
+
+      if (sunIcon) {
+        sunIcon.classList.toggle('text-secondary', !isDark);
+        sunIcon.classList.toggle('text-outline', isDark);
+        sunIcon.classList.toggle('scale-110', !isDark);
+      }
+
+      if (moonIcon) {
+        moonIcon.classList.toggle('text-secondary', isDark);
+        moonIcon.classList.toggle('text-outline', !isDark);
+        moonIcon.classList.toggle('scale-110', isDark);
+      }
+
+      if (headerToggleBtn) {
+        headerToggleBtn.setAttribute('aria-pressed', String(isDark));
+      }
+    }
+
+    function toggleLiturgicMode() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      updateLiturgicState();
+      mostrarAvisoMedieval(
+        isDark ? 'Modo Vigilia Encendido' : 'Luz de Pergamino',
+        isDark ? 'Las antorchas iluminan la pizarra nocturna.' : 'El sol de Castilla baña los pliegos.'
+      );
+    }
+
+    if (headerToggleBtn) headerToggleBtn.addEventListener('click', toggleLiturgicMode);
+
+    // =====================================================================
+    // 2B. MENÚ DESPLEGABLE RESPONSIVE EN CABECERA (< lg)
+    // =====================================================================
+    function setMobileNavOpen(open) {
+      const dropdown = document.getElementById('mobile-nav-dropdown');
+      const btn = document.getElementById('mobile-nav-toggle-btn');
+      const icon = document.getElementById('mobile-nav-icon');
+      if (!dropdown || !btn) return;
+
+      dropdown.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      if (icon) icon.textContent = open ? 'close' : 'menu';
+    }
+
+    function toggleMobileNavMenu() {
+      const dropdown = document.getElementById('mobile-nav-dropdown');
+      if (!dropdown) return;
+      const isOpen = !dropdown.classList.contains('hidden');
+      setMobileNavOpen(!isOpen);
+    }
+
+    function closeMobileNavMenu() {
+      setMobileNavOpen(false);
+    }
+
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('mobile-nav-dropdown');
+      const btn = document.getElementById('mobile-nav-toggle-btn');
+      if (!dropdown || dropdown.classList.contains('hidden')) return;
+      if (!dropdown.contains(e.target) && (!btn || !btn.contains(e.target))) {
+        closeMobileNavMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        closeMobileNavMenu();
+      }
+    });
+
+    // =====================================================================
+    // 3. CUADERNO DEL CAMINANTE (PERSISTENCIA ENTRE SESIONES, PANEL & ESTADO)
+    // =====================================================================
+    const STORAGE_KEY_CUADERNO = 'grinon_cuaderno_feudo';
+    const WINDOW_NAME_PREFIX = 'GRINON_CUADERNO_V1:';
+
+    function leerCuadernoPersistido() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_CUADERNO);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) return parsed;
+        }
+      } catch (e) {}
+
+      try {
+        if (typeof window.name === 'string' && window.name.startsWith(WINDOW_NAME_PREFIX)) {
+          const parsed = JSON.parse(window.name.slice(WINDOW_NAME_PREFIX.length));
+          if (Array.isArray(parsed)) return parsed;
+        }
+      } catch (e) {}
+
+      return [];
+    }
+
+    function escribirCuadernoPersistido(data) {
+      const serialized = JSON.stringify(data);
+      try {
+        localStorage.setItem(STORAGE_KEY_CUADERNO, serialized);
+      } catch (e) {}
+
+      try {
+        window.name = WINDOW_NAME_PREFIX + serialized;
+      } catch (e) {}
+    }
+
+    let miCuaderno = leerCuadernoPersistido();
+
+    function openCuadernoPanel() {
+      const panel = document.getElementById('cuaderno-panel');
+      if (!panel) return;
+      closeMobileNavMenu();
+      renderizarCuaderno();
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+    }
+
+    function closeCuadernoPanel() {
+      const panel = document.getElementById('cuaderno-panel');
+      if (!panel) return;
+      panel.classList.add('hidden');
+      panel.classList.remove('flex');
+    }
+
+    function toggleCuadernoPanel() {
+      const panel = document.getElementById('cuaderno-panel');
+      if (!panel) return;
+      if (panel.classList.contains('hidden')) {
+        openCuadernoPanel();
+      } else {
+        closeCuadernoPanel();
+      }
+    }
+
+    function handleAddCustomStop(event, source) {
+      event.preventDefault();
+      const prefix = source === 'panel' ? 'panel' : 'sec';
+      const titleEl = document.getElementById(`${prefix}-stop-title`);
+      const catEl = document.getElementById(`${prefix}-stop-cat`);
+      const locEl = document.getElementById(`${prefix}-stop-loc`);
+
+      const titulo = titleEl ? titleEl.value.trim() : '';
+      if (!titulo) return;
+
+      const categoria = (catEl && catEl.value.trim()) ? catEl.value.trim() : 'Parada Personalizada';
+      const rawLoc = (locEl && locEl.value.trim()) ? locEl.value.trim() : 'Griñón, Madrid';
+      const ubicacion = /griñón/i.test(rawLoc) ? rawLoc : `${rawLoc}, Griñón`;
+      const slugId = `custom-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+
+      addFeudItem(slugId, titulo, categoria, ubicacion);
+
+      if (titleEl) titleEl.value = '';
+      if (catEl) catEl.value = '';
+      if (locEl) locEl.value = '';
+    }
+
+    function guardarCuadernoEnPergamino() {
+      escribirCuadernoPersistido(miCuaderno);
+      renderizarCuaderno();
+    }
+
+    function addFeudItem(id, titulo, categoria, ubicacion) {
+      const existe = miCuaderno.some(item => item.id === id);
+      if (!existe) {
+        miCuaderno.push({ id, titulo, categoria, ubicacion });
+        mostrarAvisoMedieval('Anotado en el Cuaderno', `«${titulo}» guardado entre sesiones.`);
+      } else {
+        mostrarAvisoMedieval('Pliego Existente', `«${titulo}» ya estaba inscrito.`);
+      }
+      guardarCuadernoEnPergamino();
+    }
+
+    function quitarDelCuaderno(index) {
+      const eliminado = miCuaderno.splice(index, 1);
+      if (eliminado.length > 0) {
+        mostrarAvisoMedieval('Legajo Retirado', `«${eliminado[0].titulo}» ha sido tachado.`);
+      }
+      guardarCuadernoEnPergamino();
+    }
+
+    function moverHitoCuaderno(index, dir) {
+      const nuevoIndex = index + dir;
+      if (nuevoIndex < 0 || nuevoIndex >= miCuaderno.length) return;
+      const temp = miCuaderno[index];
+      miCuaderno[index] = miCuaderno[nuevoIndex];
+      miCuaderno[nuevoIndex] = temp;
+      guardarCuadernoEnPergamino();
+    }
+
+    function cargarJornadaIdeal() {
+      miCuaderno = [
+        { id: 'pat-plaza', titulo: 'Plaza Mayor y Soportales', categoria: 'Ágora del Feudo', ubicacion: 'Plaza Mayor de los Fueros, Griñón' },
+        { id: 'pat-iglesia', titulo: 'Iglesia de la Asunción', categoria: 'Monumento Sagrado', ubicacion: 'Plaza de la Iglesia, Griñón' },
+        { id: 'pat-convento', titulo: 'Convento de Madres Clarisas', categoria: 'Monasterio & Torno', ubicacion: 'Calle de la Fuente, Griñón' },
+        { id: 'gas-horno', titulo: 'Mesón El Horno de Griñón', categoria: 'Asador Castellano', ubicacion: 'Calle Mayor del Feudo, Griñón' },
+        { id: 'ocio-dehesa', titulo: 'Dehesa Boyal y Caminos Rurales', categoria: 'Espacio Natural & Senderismo', ubicacion: 'Dehesa Boyal, Griñón' },
+        { id: 'ocio-termas', titulo: 'Grandes Termas de Griñón', categoria: 'Balneario & Spa Clásico', ubicacion: 'Griñón, Madrid' }
+      ];
+      guardarCuadernoEnPergamino();
+      mostrarAvisoMedieval('Jornada Ideal Grabada', 'El itinerario imperial de 1 día ha sido sellado.');
+    }
+
+    function limpiarCuaderno() {
+      miCuaderno = [];
+      guardarCuadernoEnPergamino();
+      mostrarAvisoMedieval('Cuaderno en Blanco', 'Has borrado todos los hitos de tu códice.');
+    }
+
+    function generarHTMLItemsCuaderno(total) {
+      if (total === 0) {
+        return `
+          <div class="text-center py-8 px-4 bg-surface rounded-xl shadow-inner border border-outline-variant/40">
+            <div class="w-11 h-11 rounded-full bg-surface-container text-secondary flex items-center justify-center mx-auto mb-2.5">
+              <span class="material-symbols-outlined text-[22px]">history_edu</span>
+            </div>
+            <p class="font-headline-sm text-base sm:text-headline-sm text-primary">Tu Cuaderno del Caminante aguarda</p>
+            <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant max-w-sm mx-auto mt-1 italic">
+              Usa el formulario o pulsa «+ Cuaderno» en cualquier monumento, mesón o ruta de Griñón. Se conservará entre sesiones.
+            </p>
+          </div>
+        `;
+      }
+
+      return miCuaderno.map((item, idx) => `
+        <div class="flex items-center justify-between gap-2 sm:gap-3 p-3 rounded-xl bg-surface shadow-sm border border-outline-variant/40 hover:shadow transition-shadow">
+          <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <span class="w-7 h-7 rounded-full bg-primary text-secondary-fixed font-label-sm text-label-sm font-bold flex items-center justify-center shrink-0">
+              ${idx + 1}
+            </span>
+            <div class="truncate">
+              <p class="font-headline-sm text-sm sm:text-headline-sm text-primary truncate leading-tight">${item.titulo}</p>
+              <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate italic">${item.categoria} &bull; ${item.ubicacion}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-0.5 sm:gap-1 shrink-0">
+            <button type="button" onclick="moverHitoCuaderno(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Subir parada" class="p-1.5 rounded text-outline hover:text-primary disabled:opacity-20 transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+            </button>
+            <button type="button" onclick="moverHitoCuaderno(${idx}, 1)" ${idx === total - 1 ? 'disabled' : ''} title="Bajar parada" class="p-1.5 rounded text-outline hover:text-primary disabled:opacity-20 transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+            </button>
+            <button type="button" onclick="quitarDelCuaderno(${idx})" title="Tachar del códice" class="p-1.5 rounded text-error hover:bg-error-container transition-colors ml-0.5 cursor-pointer">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderizarCuaderno() {
+      const contenedor = document.getElementById('cuaderno-lista');
+      const panelContenedor = document.getElementById('panel-cuaderno-lista');
+      const footer = document.getElementById('cuaderno-footer');
+      const contador = document.getElementById('cuaderno-counter-text');
+      const panelContador = document.getElementById('panel-cuaderno-counter-text');
+      const headerBadge = document.getElementById('header-cuaderno-badge');
+      const panelCopyBtn = document.getElementById('panel-cuaderno-copy-btn');
+
+      const total = miCuaderno.length;
+      const textoContador = `${total} ${total === 1 ? 'parada anotada' : 'paradas anotadas'}`;
+
+      if (contador) contador.textContent = textoContador;
+      if (panelContador) panelContador.textContent = textoContador;
+      if (headerBadge) headerBadge.textContent = String(total);
+
+      const htmlLista = generarHTMLItemsCuaderno(total);
+      if (contenedor) contenedor.innerHTML = htmlLista;
+      if (panelContenedor) panelContenedor.innerHTML = htmlLista;
+
+      if (footer) {
+        footer.classList.toggle('hidden', total === 0);
+      }
+      if (panelCopyBtn) {
+        panelCopyBtn.classList.toggle('opacity-40', total === 0);
+        panelCopyBtn.disabled = total === 0;
+      }
+    }
+
+    function copiarResumenRuta() {
+      if (miCuaderno.length === 0) return;
+      const lineas = miCuaderno.map((h, i) => `${i + 1}. ${h.titulo} (${h.categoria} - ${h.ubicacion})`);
+      const texto = `🏰 Cuaderno del Caminante • Villa Histórica de Griñón:\n\n${lineas.join('\n')}\n\nSellado con fe y testimonio de la comarca de La Sagra.`;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarAvisoMedieval('Pliego Copiado', 'Tu itinerario está listo para compartir con tus acompañantes.');
+        });
+      } else {
+        const el = document.createElement('textarea');
+        el.value = texto;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        mostrarAvisoMedieval('Pliego Copiado', 'Tu itinerario está listo para compartir con tus acompañantes.');
+      }
+    }
+
+    // Sincronización si se modifica desde otra pestaña de la misma sesión/origen
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY_CUADERNO) {
+        miCuaderno = leerCuadernoPersistido();
+        renderizarCuaderno();
+      }
+    });
+
+    // =====================================================================
+    // 4. NOTIFICACIÓN TOAST CON ESTILO DE LACRE
+    // =====================================================================
+    let toastTimer;
+    function mostrarAvisoMedieval(titulo, msg) {
+      const toast = document.getElementById('relic-toast');
+      const toastTitle = document.getElementById('relic-toast-title');
+      const toastMsg = document.getElementById('relic-toast-message');
+
+      if (!toast) return;
+
+      if (toastTitle) toastTitle.textContent = titulo;
+      if (toastMsg) toastMsg.textContent = msg;
+
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-32', 'opacity-0');
+      }, 3200);
+    }
+
+    // =====================================================================
+    // 5. MODAL DE CRÓNICAS HISTÓRICAS
+    // =====================================================================
+    function openRelicModal(key) {
+      const c = cronicasDeGrinon[key];
+      if (!c) return;
+
+      const modal = document.getElementById('relic-modal');
+      document.getElementById('modal-relic-tag').textContent = c.tag;
+      document.getElementById('modal-relic-title').textContent = c.title;
+      document.getElementById('modal-relic-text').textContent = c.desc;
+      document.getElementById('modal-relic-hours').textContent = c.hours;
+      document.getElementById('modal-relic-loc').textContent = c.loc;
+      document.getElementById('modal-relic-tip').textContent = c.tip;
+
+      const addBtn = document.getElementById('modal-add-button');
+      addBtn.onclick = () => {
+        addFeudItem(key, c.title, 'Monumento Sagrado', c.loc);
+        closeRelicModal();
+      };
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRelicModal() {
+      const modal = document.getElementById('relic-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    const modalBackdrop = document.getElementById('relic-modal');
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target.id === 'relic-modal') closeRelicModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeRelicModal();
+        closeCuadernoPanel();
+        closeMobileNavMenu();
+      }
+    });
+
+    // =====================================================================
+    // 6. FILTRO DE TABLILLAS DE ASADORES
+    // =====================================================================
+    document.querySelectorAll('.tablilla-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tablilla-filter-btn').forEach(b => {
+          b.className = 'tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-primary border border-outline-variant/50 shadow-sm transition-all cursor-pointer';
+        });
+        btn.className = 'tablilla-filter-btn min-h-[38px] px-4 sm:px-5 py-2 rounded-lg font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-primary text-on-primary shadow-sm transition-all cursor-pointer';
+
+        const cat = btn.getAttribute('data-tavern');
+        document.querySelectorAll('.tavern-card').forEach(card => {
+          if (cat === 'todos' || card.getAttribute('data-cat') === cat) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Inicialización de la Villa
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarSistemaDisenoDesdeMarkdown();
+      miCuaderno = leerCuadernoPersistido();
+      renderizarCuaderno();
+      updateLiturgicState();
+    });
+  </script>
+</body>
+</html>
